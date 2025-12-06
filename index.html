@@ -2,8 +2,8 @@
 <html lang="pl">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JAKANA SUSHI</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -50,7 +50,7 @@
       color: #222;
       text-decoration: none;
       font-weight: bold;
-      transition: 0.3s;
+      transition: .3s;
     }
 
     nav a:hover {
@@ -87,7 +87,8 @@
     }
 
     .hero {
-      background: url('https://plus.unsplash.com/premium_photo-1674062989120-4ccc0eb35be0?q=80&w=687&auto=format&fit=crop') center/cover no-repeat;
+      /* poprawiona ścieżka: używamy / zamiast \ */
+      background: url('foto/7.png') center/cover no-repeat;
       height: 70vh;
       display: flex;
       justify-content: center;
@@ -100,10 +101,7 @@
     .hero::after {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       background: rgba(0, 0, 0, 0.3);
     }
 
@@ -137,7 +135,7 @@
       border-radius: 8px;
       text-align: center;
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform .3s, box-shadow .3s;
     }
 
     .menu-item:hover {
@@ -150,25 +148,38 @@
       color: #2a9d8f;
     }
 
+    .menu-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 25px;
     }
 
     .gallery-grid img {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.3s;
+      transition: transform .3s;
     }
 
     .gallery-grid img:hover {
       transform: scale(1.03);
     }
 
+    .menu-grid {
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    /* lightbox */
     .lightbox {
       display: none;
       position: fixed;
@@ -179,13 +190,20 @@
       background: rgba(0, 0, 0, 0.9);
       justify-content: center;
       align-items: center;
-      z-index: 100;
+      z-index: 1000;
+      cursor: zoom-out;
+    }
+
+    .lightbox.active {
+      display: flex;
     }
 
     .lightbox img {
       max-width: 90%;
-      max-height: 80%;
+      max-height: 90%;
       border-radius: 10px;
+      cursor: auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     }
 
     .about-intro {
@@ -252,7 +270,7 @@
       color: #e63946;
       font-size: 1.5rem;
       text-decoration: none;
-      transition: 0.3s;
+      transition: .3s;
     }
 
     .socials a:hover {
@@ -263,7 +281,7 @@
       border-radius: 8px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width:768px) {
       .menu-toggle {
         display: block;
       }
@@ -286,6 +304,16 @@
         text-align: center;
       }
     }
+
+    /* Mini animacja przy najechaniu */
+    .clickable {
+      cursor: pointer;
+      transition: transform .2s ease;
+    }
+
+    .clickable:hover {
+      transform: scale(1.03);
+    }
   </style>
 </head>
 
@@ -306,7 +334,8 @@
   </header>
 
   <section class="hero">
-    <h2><img src="Logotyp_JAKANA_SUSHI_kolor_CMYK.svg" alt="JAKANA SUSHI" class="logo"></h2>
+    <h2><img src="JAKANA-Sushi LOGO\LOGO - Kolor\Logotyp_JAKANA_SUSHI_kolor_CMYK.svg" alt="JAKANA SUSHI" class="logo">
+    </h2>
   </section>
 
   <section id="menu">
@@ -314,48 +343,49 @@
 
     <!-- ZESTAWY SUSHI -->
     <h3>Zestawy Sushi</h3>
+
     <div class="menu-grid">
+
       <div class="menu-item">
         <h4>HITORI – 59 zł</h4>
-        <p>18 szt. – Porcja sushi dla jednej osoby, lekka i różnorodna z możliwością wyboru ulubionego uramaka.<br>
-          Uramak (Twój wybór), Hosomak ogórek, Nigiri Sake.</p>
+        <img src="foto/Post nr 2 zestawy/2.png" class="clickable" alt="Hitori zestaw sushi">
       </div>
+
       <div class="menu-item">
         <h4>FUTARI – 109 zł</h4>
-        <p>28 szt. + 6 szt. – Zestaw dla dwojga z klasycznymi rolkami: Futomak Sake Philadelphia, Futomak Sparkling
-          Tuna, Hosomak ogórek, Hosomak Ebi Maki, Sajgonki 6 szt.</p>
+        <img src="foto/Post nr 2 zestawy/3.png" class="clickable" alt="Futari zestaw sushi">
       </div>
+
       <div class="menu-item">
         <h4>FUTARI YAKITORI – 115 zł</h4>
-        <p>28 szt. + 6 szt. – Zestaw z grillowanymi dodatkami: Futomak Sake Kabayaki, Futomak Ebi Panko, Hosomak ogórek,
-          Hosomak Negi Maguro Maki, Sajgonki 6 szt.</p>
+        <img src="foto/Post nr 2 zestawy/4.png" class="clickable" alt="Futari Yakitori zestaw sushi">
       </div>
+
       <div class="menu-item">
-        <h4>FUTARI MIDORI – 95 zł</h4>
-        <p>28 szt. + 6 szt. – Wegetariański zestaw: Futomak Sweet Veggie, Futomak Midori Ten, Hosomak ogórek, Hosomak
-          awokado, Sajgonki 6 szt.</p>
+        <h4>FUTARI MIDORI – 95 zł 🍃</h4>
+        <img src="foto/Post nr 2 zestawy/5.png" class="clickable" alt="Futari Midori zestaw sushi">
       </div>
+
       <div class="menu-item">
         <h4>KIZUNA – 149 zł</h4>
-        <p>30 szt. – Większy zestaw dla znajomych: Futomak Sake Philadelphia, Maguro Ten, Ebi Sake, Midori Ten, Chicken
-          Karaage.</p>
+        <img src="foto/Post nr 2 zestawy/6.png" class="clickable" alt="Kizuna zestaw sushi">
       </div>
+
       <div class="menu-item">
         <h4>KAZOKU – 219 zł</h4>
-        <p>48 szt. + 6 szt. + 200g – Zestaw rodzinny: Futomak Ebi Panko, Sake Tatar, Sweet Veggie, Tara Ten, Speciał
-          Sake Special Roll, Hosomak Sake Maki, Negi Maguro Maki, Gyoza 6 szt., Edamame 200g.</p>
+        <img src="foto/Post nr 2 zestawy/7.png" class="clickable" alt="Kazoku zestaw sushi">
       </div>
+
       <div class="menu-item">
         <h4>JAKANA PARTY – 269 zł</h4>
-        <p>70 szt. – Duża różnorodność smaków: Sake Yaki Roll, Crisby Ebi, Sake Nutty, Crunchy Chicken, Spicy Maguro,
-          Sake Philadelphia, Ebi Sake, Midori Ten, Jakana Dill, Hosomak Sake Maki.</p>
+        <img src="foto/Post nr 2 zestawy/8.png" class="clickable" alt="Jakana Party zestaw sushi">
       </div>
+
       <div class="menu-item">
         <h4>TAKUSAN – 349 zł</h4>
-        <p>68 szt. + 10 szt. – Zestaw premium: Jakana Special Roll, Rainbow Roll, Ebi Sake Tatar, Ebi Mango Roll, Sake
-          Philadelphia, Sake Kabayaki, Sake Ten, Maguro Philadelphia, Sweet Veggie, Chicken Karaage, Krewetki w panko 10
-          szt.</p>
+        <img src="foto/Post nr 2 zestawy/9.png" class="clickable" alt="Takusan zestaw sushi">
       </div>
+
     </div>
 
     <!-- LUNCH -->
@@ -379,13 +409,13 @@
     <!-- PRZYSTAWKI -->
     <h3>Przystawki</h3>
     <ul>
-      <li>Sajgonki 6 szt. z warzywami – 15 zł</li>
+      <li>Sajgonki 6 szt. z warzywami – 15 zł🍃</li>
       <li>Pierożki Gyoza 6 szt. z warzywami – 15 zł / z wieprzowiną – 20 zł</li>
       <li>Krewetki w panko 6 szt. – 30 zł / 10 szt. – 55 zł</li>
-      <li>Warzywa w tempurze 10 szt. – 15 zł</li>
+      <li>Warzywa w tempurze 10 szt. – 15 zł🍃</li>
       <li>Tatar z łososia 150 g – 36 zł</li>
-      <li>Edamame fasolki 200 g – 15 zł</li>
-      <li>Goma Wakame 150 g – 10 zł</li>
+      <li>Edamame fasolki 200 g – 15 zł🍃</li>
+      <li>Goma Wakame 150 g – 10 zł🍃</li>
     </ul>
 
     <!-- SASHIMI -->
@@ -398,70 +428,300 @@
 
     <!-- FUTOMAKI -->
     <h3>Futomaki (6 szt.)</h3>
-    <ul>
-      <li>Sake Philadelphia – 30 zł</li>
-      <li>Sake Kabayaki – 30 zł</li>
-      <li>Sake Ten – 31 zł</li>
-      <li>Maguro Philadelphia – 34 zł</li>
-      <li>Maguro Ten – 35 zł</li>
-      <li>Spicy Maguro – 35 zł</li>
-      <li>Ebi Panko – 35 zł</li>
-      <li>Ebi Sake – 38 zł</li>
-      <li>Sake Tatar – 32 zł</li>
-      <li>Tara Ten – 30 zł</li>
-      <li>Sparkling Tuna – 36 zł</li>
-      <li>Chicken Karaage – 29 zł</li>
-      <li>Jakana Dill – 32 zł</li>
-      <li>Sweet Veggie – 26 zł</li>
-      <li>Midori Ten – 26 zł</li>
-    </ul>
+    <div class="menu-grid">
+
+      <div class="menu-item">
+        <h4>Sake Philadelphia</h4>
+        <h5>łosoś, ogórek, awokado, sałata, serek- 30zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 2.PNG" class="clickable" alt="Sake Philadelphia">
+      </div>
+
+      <div class="menu-item">
+        <h4>Sake Kabayaki</h4>
+        <h5>łosoś pieczony, ogórek, awokado,sałata, marynowana tykwa, serek - sos kabayaki - 30 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 3.PNG" class="clickable" alt="Sake Kabayaki">
+      </div>
+
+      <div class="menu-item">
+        <h4>SAKE TEN</h4>
+        <h5>łosoś w tempurze, ogórek, awokado, mango, groszek cukrowy, spicy mayo - pulpa mango — 31 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 4.PNG" class="clickable" alt="SAKE TEN">
+      </div>
+
+      <div class="menu-item">
+        <h4>MAGURO PHILADELPHIA</h4>
+        <h5>tuńczyk, ogórek, awokado, sałata, oshinko, serek — 34 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 5.PNG" class="clickable" alt="MAGURO PHILADELPHIA">
+      </div>
+
+      <div class="menu-item">
+        <h4>MAGURO TEN</h4>
+        <h5>tuńczyk w panko, ogórek, awokado, oshinko, groszek cukrowy, spicy mayo – sos kabayaki — 35 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 6.PNG" class="clickable" alt="MAGURO TEN">
+      </div>
+
+      <div class="menu-item">
+        <h4>SPICY MAGURO🌶️</h4>
+        <h5>tuńczyk, ogórek, awokado, sałata, oshinko, chilli, serek wasabi – kizami wasabi — 35 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 7.PNG" class="clickable" alt="SPICY MAGURO">
+      </div>
+
+      <div class="menu-item">
+        <h4>EBI PANKO</h4>
+        <h5>krewetka w panko, ogórek, awokado, mango, tobiko, spicy mayo - pulpa mango — 35 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 8.PNG" class="clickable" alt="EBI PANKO">
+      </div>
+
+      <div class="menu-item">
+        <h4>EBI SAKE</h4>
+        <h5>krewetka w panko, łosoś, ogórek, awokado, sałata, szczypiorkowy mayo - szczypiorek — 38 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 9.PNG" class="clickable" alt="EBI SAKE">
+      </div>
+
+      <div class="menu-item">
+        <h4>SAKE TATAR</h4>
+        <h5>tatar z łososia, ogórek, awokado, serek wasabi - szczypiorek — 32 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 10.PNG" class="clickable" alt="SAKE TATAR">
+      </div>
+
+      <div class="menu-item">
+        <h4>TARA TEN</h4>
+        <h5>dorsz w panko, ogórek, awokado, sałata, oshinko, serek wasabi — 30 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 11.PNG" class="clickable" alt="TARA TEN">
+      </div>
+
+      <div class="menu-item">
+        <h4>SPARKLING TUNA</h4>
+        <h5>tatar z tuńczyka, ogórek, oshinko, spicy mayo – biały sezam — 36 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 12.PNG" class="clickable" alt="SPARKLING TUNA">
+      </div>
+
+      <div class="menu-item">
+        <h4>CHICKEN KAARAGE🐔</h4>
+        <h5>kurczak w panko, ogórek, awokado, sałata, orzechowy mayo – orzechy ziemne — 29 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 16.PNG" class="clickable" alt="CHICKEN KAARAGE">
+      </div>
+
+      <div class="menu-item">
+        <h4>JAKANA DILL</h4>
+        <h5>łosoś z sojowo-koperkowej zalewy, ogórek, awokado, marynowana czerwona cebula, shitake, serek - koperek — 32
+          zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 13.PNG" class="clickable" alt="JAKANA DILL">
+      </div>
+
+      <div class="menu-item">
+        <h4>SWEET VEGGIE 🍃</h4>
+        <h5>batat, ogórek, awokado, sałata, oshinko, marynowana tykwa, marynowana czerwona cebula, serek - sos kabayaki
+          — 26 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 14.PNG" class="clickable" alt="SWEET VEGGIE">
+      </div>
+
+      <div class="menu-item">
+        <h4>MIDORI TEN 🍃</h4>
+        <h5>szparag w tempurze, ogórek, awokado, sałata, groszek cukrowy, szczypiorkowy mayo - szczypiorek — 26 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 15.PNG" class="clickable" alt="MIDORI TEN">
+      </div>
+
+    </div>
 
     <!-- KABURAMAKI -->
     <h3>Kaburamaki (Specjały, 8 szt.)</h3>
-    <ul>
-      <li>Ebi Sake Tatar – 47 zł</li>
-      <li>Ebi Mango Roll – 47 zł</li>
-      <li>Rainbow Roll – 49 zł</li>
-      <li>Awokado Special Roll – 45 zł</li>
-      <li>Sake Special Roll – 45 zł</li>
-      <li>Double Tuna Roll – 51 zł</li>
-      <li>Jakana Special Roll – 45 zł</li>
-    </ul>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <h4>EBI SAKE TATAR</h4>
+        <h5>krewetka w panko, ogórek, awokado, spicy mayo – tatar z łososia, szczypiorek — 47 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 45.PNG" class="clickable" alt="EBI SAKE TATAR">
+      </div>
+    
+      <div class="menu-item">
+        <h4>EBI MANGO ROLL</h4>
+        <h5>krewetka w panko, ogórek, awokado, spicy mayo - salsa mango, pistacje, pulpa mango — 47 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 41.PNG" class="clickable" alt="EBI MANGO ROLL">
+      </div>
+    
+      <div class="menu-item">
+        <h4>RAINBOW ROLL</h4>
+        <h5>krewetka w panko, ogórek, awokado, szczypiorkowy mayo - łosoś, tuńczyk, krewetka, awokado — 49 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 46.PNG" class="clickable" alt="RAINBOW ROLL">
+      </div>
+    
+      <div class="menu-item">
+        <h4>AWOKADO SPECIAL ROLL</h4>
+        <h5>krewetka w panko, ogórek, awokado, spicy mayo - awokado, sos kabayaki, mix sezam — 45 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 42.PNG" class="clickable" alt="AWOKADO SPECIAL ROLL">
+      </div>
+    
+      <div class="menu-item">
+        <h4>SAKE SPECIAL ROLL</h4>
+        <h5>ogórek, awokado, szparag w tempurze, serek szczypiorkowy - łosoś opalany, czosnek — 45 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 44.PNG" class="clickable" alt="SAKE SPECIAL ROLL">
+      </div>
+    
+      <div class="menu-item">
+        <h4>DOUBLE TUNA ROLL🌶️</h4>
+        <h5>tuńczyk, ogórek, awokado, spicy mayo - tuńczyk, kizami wasabi — 51 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 43.PNG" class="clickable" alt="DOUBLE TUNA ROLL">
+      </div>
+    
+      <div class="menu-item">
+        <h4>JAKANA SPECIAL ROLL</h4>
+        <h5>ogórek, awokado, groszek cukrowy, serek – łosoś z sojowo-koperkowej zalewy, marynowana czerwona cebula, shitake,
+          koperek — 45 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 40.PNG" class="clickable" alt="JAKANA SPECIAL ROLL">
+      </div>
+    </div>
 
     <!-- NIGIRI -->
     <h3>Nigiri (2 szt.)</h3>
-    <ul>
-      <li>Sake – 12 zł</li>
-      <li>Sake Yaki – 12 zł</li>
-      <li>Maguro – 13 zł</li>
-      <li>Ebi – 14 zł</li>
-      <li>Awokado – 11 zł</li>
-    </ul>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <h4>SAKE</h4>
+        <h5>łosoś — 12 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 17.PNG" class="clickable" alt="SAKE">
+      </div>
+
+      <div class="menu-item">
+        <h4>SAKE YAKI</h4>
+        <h5>łosoś opalany — 12 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 18.PNG" class="clickable" alt="SAKE YAKI">
+      </div>
+
+      <div class="menu-item">
+        <h4>MAGURO</h4>
+        <h5>tuńczyk — 13 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 19.PNG" class="clickable" alt="MAGURO">
+      </div>
+
+      <div class="menu-item">
+        <h4>EBI</h4>
+        <h5>krewetka — 14 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 20.PNG" class="clickable" alt="EBI">
+      </div>
+
+      <div class="menu-item">
+        <h4>AWOKADO🍃</h4>
+        <h5>awokado — 11 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 21.PNG" class="clickable" alt="AWOKADO">
+      </div>
+    </div>
+
 
     <!-- URAMAKI -->
     <h3>Uramaki (8 szt.)</h3>
-    <ul>
-      <li>Sake Roll – 32 zł</li>
-      <li>Sake Yaki Roll – 32 zł</li>
-      <li>Maguro Roll – 36 zł</li>
-      <li>Crisby Ebi – 37 zł</li>
-      <li>Ebi Nutty – 36 zł</li>
-      <li>Sake Nutty – 35 zł</li>
-      <li>Crunchy Maguro – 37 zł</li>
-      <li>Yasai Roll – 28 zł</li>
-      <li>Crunchy Chicken – 31 zł</li>
-      <li>California Roll – 38 zł</li>
-      <li>Tara Roll – 32 zł</li>
-    </ul>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <h4>SAKE ROLL</h4>
+        <h5>łosoś, ogórek, awokado, sałata, serek – biały sezam — 32 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 30.PNG" class="clickable" alt="SAKE ROLL">
+      </div>
+    
+      <div class="menu-item">
+        <h4>SAKE YAKI ROLL</h4>
+        <h5>łosoś pieczony, ogórek, awokado, marynowana tykwa, szczypiorkowy mayo – szczypiorek — 32 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 29.PNG" class="clickable" alt="SAKE YAKI ROLL">
+      </div>
+    
+      <div class="menu-item">
+        <h4>MAGURO ROLL</h4>
+        <h5>tuńczyk, ogórek, oshinko, spicy mayo – kimchi sezam — 36 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 31.PNG" class="clickable" alt="MAGURO ROLL">
+      </div>
+    
+      <div class="menu-item">
+        <h4>CRISPY EBI</h4>
+        <h5>krewetka w panko, ogórek, awokado, spicy mayo – mix sezam — 37 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 37.PNG" class="clickable" alt="CRISPY EBI">
+      </div>
+    
+      <div class="menu-item">
+        <h4>EBI NUTTY</h4>
+        <h5>krewetka w panko, ogórek, awokado, orzechowy mayo – orzeszki ziemne — 36 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 35.PNG" class="clickable" alt="EBI NUTTY">
+      </div>
+    
+      <div class="menu-item">
+        <h4>SAKE NUTTY</h4>
+        <h5>łosoś w tempurze, ogórek, awokado, serek – pistacje — 35 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 36.PNG" class="clickable" alt="SAKE NUTTY">
+      </div>
+    
+      <div class="menu-item">
+        <h4>CRUNCHY MAGURO</h4>
+        <h5>tuńczyk w panko, ogórek, oshinko, spicy mayo – kataifii, sos kabayaki — 37 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 39.PNG" class="clickable" alt="CRUNCHY MAGURO">
+      </div>
+    
+      <div class="menu-item">
+        <h4>YASAI ROLL</h4>
+        <h5>szparag w tempurze, ogórek, awokado, marynowana tykwa, marynowana czerwona cebula - szczypiorek i biały sezam —
+          28 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 34.PNG" class="clickable" alt="YASAI ROLL">
+      </div>
+    
+      <div class="menu-item">
+        <h4>CRUNCHY CHICKEN🌶️</h4>
+        <h5>kurczak w panko, ogórek, awokado, spicy mayo – kataifii, crunchy chilli — 31 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 32.PNG" class="clickable" alt="CRUNCHY CHICKEN">
+      </div>
+    
+      <div class="menu-item">
+        <h4>CALIFORNIA ROLL</h4>
+        <h5>krewetka gotowana, ogórek, awokado, groszek cukrowy, serek wasabi - tobiko pomarańczowe, mix sezam — 38 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 33.PNG" class="clickable" alt="CALIFORNIA ROLL">
+      </div>
+    
+      <div class="menu-item">
+        <h4>TARA ROLL</h4>
+        <h5>dorsz w panko, ogórek, oshinko, serek szczypiorkowy – sezam czarny — 32 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 38.PNG" class="clickable" alt="TARA ROLL">
+      </div>
+    </div>
 
     <!-- HOSOMAKI -->
     <h3>Hosomaki (8 szt.)</h3>
-    <ul>
-      <li>Vege Maki – 15 zł</li>
-      <li>Sake Maki – 17 zł</li>
-      <li>Ebi Maki – 19 zł</li>
-      <li>Negi Maguro Maki – 19 zł</li>
-    </ul>
+    <div class="menu-item">
+      <div class="menu-item">
+        <h4>SAKE MAKI</h4>
+        <h5>łosoś — 17 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 24.PNG" class="clickable" alt="SAKE MAKI">
+      </div>
+
+      <div class="menu-item">
+        <h4>EBI MAKI</h4>
+        <h5>krewetka — 19 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 22.PNG" class="clickable" alt="EBI MAKI">
+      </div>
+
+      <div class="menu-item">
+        <h4>NEGI MAGURO MAKI</h4>
+        <h5>tuńczyk — 19 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 23.PNG" class="clickable" alt="NEGI MAGURO MAKI">
+      </div>
+
+      <div class="menu-item">
+        <h4>VEGE MAKI – OGÓREK🍃</h4>
+        <h5>ogórek — 15 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 25.PNG" class="clickable" alt="VEGE MAKI OGÓREK">
+      </div>
+
+      <div class="menu-item">
+        <h4>VEGE MAKI – AWOKADO🍃</h4>
+        <h5>awokado — 15 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 28.PNG" class="clickable" alt="VEGE MAKI AWOKADO">
+      </div>
+
+      <div class="menu-item">
+        <h4>VEGE MAKI – TYKWA🍃</h4>
+        <h5> tykwa — 15 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 26.PNG" class="clickable" alt="VEGE MAKI TYKWA">
+      </div>
+
+      <div class="menu-item">
+        <h4>VEGE MAKI – OSHINKO🍃</h4>
+        <h5>oshinko — 15 zł</h5>
+        <img src="foto/Rolki na strone/Wielkie otwarcie! - 27.PNG" class="clickable" alt="VEGE MAKI OSHINKO">
+      </div>
+    </div>
 
     <!-- DESERY I SOSY -->
     <h3>Desery</h3>
@@ -483,24 +743,6 @@
     </ul>
   </section>
 
-
-  <section id="gallery">
-    <h2>Galeria</h2>
-    <div class="gallery-grid">
-      <img
-        src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="Sushi 1">
-      <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80"
-        alt="Sushi 2">
-      <img
-        src="https://images.unsplash.com/photo-1615361200141-f45040f367be?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="Sushi 3">
-      <img
-        src="https://plus.unsplash.com/premium_photo-1668143358351-b20146dbcc02?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="Sushi 4">
-    </div>
-  </section>
-
   <section id="about" class="about">
     <div class="about-intro">
       <h2>O nas</h2>
@@ -518,9 +760,7 @@
 
     <div class="chefs">
       <div class="chef">
-        <img
-          src="https://plus.unsplash.com/premium_photo-1661778091956-15dbe6e47442?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2hlZnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500"
-          alt="Anna Kapuścińska">
+        <img src="foto/8.png" alt="Anna Kapuścińska">
         <div>
           <h3>Anna</h3>
           <p>
@@ -542,11 +782,9 @@
       </div>
 
       <div class="chef">
-        <img
-          src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2hlZnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500"
-          alt="Jakub Odrzywolski">
+        <img src="foto/4.png" alt="Jakub Odrzywolski">
         <div>
-          <h3>Kuba</h3>
+          <h3>Jakub</h3>
           <p>
             Jestem doświadczonym sushi master z <b>10-letnią praktyką w kuchni japońskiej</b>. Swoją drogę zawodową
             rozpocząłem
@@ -626,36 +864,50 @@
   <footer>
     <p>&copy; 2025 JAKANA SUSHI</p>
     <div class="socials">
-      <a href="https://www.facebook.com/profile.php?id=61581330644887" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.facebook.com/profile.php?id=61581330644887" target="_blank"><i
+          class="fab fa-facebook-f"></i></a>
       <a href="https://instagram.com/jakana_sushi" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
 
   <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
-    <img src="" alt="Powiększone zdjęcie">
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog">
+    <img id="lightbox-img" src="" alt="Powiększone zdjęcie">
   </div>
 
   <script>
-    const toggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    toggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      if (toggle && navLinks) {
+        toggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+      }
 
-    const images = document.querySelectorAll('.gallery-grid img');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = lightbox.querySelector('img');
+      const images = document.querySelectorAll('.menu-grid img, .gallery-grid img');
+      images.forEach(img => img.classList.add('clickable'));
 
-    images.forEach(img => {
-      img.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+
+      images.forEach(img => {
+        img.addEventListener('click', (e) => {
+          if (!img.src) return;
+          lightboxImg.src = img.src;
+          lightbox.classList.add('active');
+          lightbox.setAttribute('aria-hidden', 'false');
+          e.stopPropagation();
+        });
       });
-    });
 
-    lightbox.addEventListener('click', () => {
-      lightbox.style.display = 'none';
+      lightbox.addEventListener('click', closeLightbox);
+      lightboxImg.addEventListener('click', (e) => e.stopPropagation());
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImg.src = '';
+      }
     });
   </script>
 </body>
