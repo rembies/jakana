@@ -593,7 +593,6 @@ const galleryImages = [
   "images/Galeria_zdjecia/21.jpeg",
   "images/Galeria_zdjecia/22.jpg",
   "images/Galeria_zdjecia/23.jpeg",
-  "images/Galeria_zdjecia/24.jpeg",
   "images/Galeria_zdjecia/27.jpeg",
   "images/Galeria_zdjecia/28.jpeg",
   "images/Galeria_zdjecia/29.jpeg",
