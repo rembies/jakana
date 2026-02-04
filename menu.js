@@ -569,7 +569,6 @@ const nextBtn = document.getElementById("nextSlide");
 // Lista zdjęć
 const galleryImages = [
   "images/Galeria_zdjecia/1.png",
-  "images/Galeria_zdjecia/2.jpg",
   "images/Galeria_zdjecia/2.png",
   "images/Galeria_zdjecia/3.png",
   "images/Galeria_zdjecia/5.jpg",
