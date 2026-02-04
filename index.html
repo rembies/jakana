@@ -1,920 +1,355 @@
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
   <title>JAKANA SUSHI</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: #fdfdfd;
-      color: #222;
-      line-height: 1.6;
-    }
-
-    header {
-      background: #ffffff;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid #e63946;
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    }
-
-    header h1 {
-      font-size: 1.6rem;
-      letter-spacing: 2px;
-      color: #e63946;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-
-    nav a {
-      color: #222;
-      text-decoration: none;
-      font-weight: bold;
-      transition: .3s;
-    }
-
-    nav a:hover {
-      color: #2a9d8f;
-    }
-
-    .menu-toggle {
-      display: none;
-      font-size: 1.8rem;
-      color: #222;
-      cursor: pointer;
-    }
-
-    .nav-links {
-      display: flex;
-    }
-
-    .nav-links.active {
-      display: block;
-      position: absolute;
-      top: 60px;
-      right: 0;
-      background: #fff;
-      width: 200px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      padding: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-links.active ul {
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .hero {
-      background: url('foto/6.png') center/cover no-repeat;
-      height: 90vh;
-      width: 70vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end; 
-      text-align: center;
-      color: #fff;
-      position: relative;
-      padding-bottom: 10px; 
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.3);
-    }
-
-    .hero h2 {
-      font-size: 2.8rem;
-      z-index: 1;
-    }
-
-    section {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    section h2 {
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 2rem;
-      color: #e63946;
-    }
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .menu-item {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-      transition: transform .3s, box-shadow .3s;
-    }
-
-    .menu-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .menu-item h3 {
-      margin-bottom: 10px;
-      color: #2a9d8f;
-    }
-
-    .menu-item img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 25px;
-    }
-
-    .gallery-grid img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: transform .3s;
-    }
-
-    .gallery-grid img:hover {
-      transform: scale(1.03);
-    }
-
-    .menu-grid {
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px;
-    }
-
-    /* lightbox */
-    .lightbox {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      cursor: zoom-out;
-    }
-
-    .lightbox.active {
-      display: flex;
-    }
-
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 10px;
-      cursor: auto;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-    }
-
-    .about-intro {
-      background: #fff;
-      padding: 30px 20px;
-      border-radius: 10px;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-      margin-bottom: 60px;
-    }
-
-    .chefs {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      margin-top: 40px;
-    }
-
-    .chef {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-    }
-
-    .chef img {
-      width: 160px;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .chef h3 {
-      color: #e63946;
-      margin-bottom: 10px;
-    }
-
-    #menu h3 {
-      text-align: center;
-      margin-top: 40px;
-      margin-bottom: 20px;
-      color: #e63946;
-    }
-
-    footer {
-      background: #f5f5f5;
-      color: #555;
-      padding: 20px;
-      text-align: center;
-      border-top: 2px solid #e63946;
-    }
-
-    .socials {
-      margin-top: 10px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .socials a {
-      color: #e63946;
-      font-size: 1.5rem;
-      text-decoration: none;
-      transition: .3s;
-    }
-
-    .socials a:hover {
-      color: #2a9d8f;
-    }
-
-    iframe {
-      border-radius: 8px;
-    }
-
-    @media (max-width:768px) {
-      .menu-toggle {
-        display: block;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .nav-links ul {
-        flex-direction: column;
-      }
-
-      .hero h2 {
-        font-size: 2rem;
-      }
-
-      .chef {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-    }
-
-    /* Mini animacja przy najechaniu */
-    .clickable {
-      cursor: pointer;
-      transition: transform .2s ease;
-    }
-
-    .clickable:hover {
-      transform: scale(1.03);
-    }
-  </style>
 </head>
 
-<body>
-  <header>
-    <h1>JAKANA SUSHI</h1>
-    <nav>
-      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-      <div class="nav-links">
-        <ul>
-          <li><a href="#menu">Menu</a></li>
-          <li><a href="#gallery">Galeria</a></li>
-          <li><a href="#about">O nas</a></li>
-          <li><a href="#contact">Kontakt</a></li>
-        </ul>
-      </div>
+<body class="scroll-smooth font-[Poppins] bg-white">
+<header class="sticky top-0 z-50 bg-white shadow-md pt-5" data-aos="fade-down" role="banner">
+  <div class="max-w-[1600px] mx-auto flex items-center justify-between px-5">
+
+    <!-- Logo -->
+    <div class="flex-shrink-0 flex items-center pb-5">
+      <img src="images/1.png" alt="Logo Jakana Sushi" class="h-6 sm:h-8 md:h-12 w-auto object-contain">
+    </div>
+
+    <!-- Menu desktop -->
+    <nav id="menu" class="hidden md:flex items-center gap-x-8 font-medium text-black tracking-wide pb-5"
+         role="navigation" aria-label="Główne menu">
+      <a href="#menu-container" class="hover:text-red-600 transition-colors">Menu</a>
+      <a href="#galeria" class="hover:text-red-600 transition-colors">Galeria</a>
+      <a href="#o_nas" class="hover:text-red-600 transition-colors">O nas</a>
+      <a href="#kontakt" class="hover:text-red-600 transition-colors">Kontakt</a>
     </nav>
-  </header>
 
-  <section class="hero">
-    <!-- <h2>
-      <img src="JAKANA-Sushi LOGO\LOGO - Kolor\Logotyp_JAKANA_SUSHI_kolor_CMYK.svg" alt="JAKANA SUSHI" class="logo">
-    </h2> -->
-  </section>
+    <!-- Hamburger -->
+    <button
+      id="menu-toggle"
+      class="md:hidden flex flex-col justify-between w-6 h-6 focus:outline-none mb-5"
+      aria-label="Otwórz menu"
+      aria-controls="mobile-menu"
+      aria-expanded="false">
+      <span class="block w-full h-0.5 bg-black" aria-hidden="true"></span>
+      <span class="block w-full h-0.5 bg-black" aria-hidden="true"></span>
+      <span class="block w-full h-0.5 bg-black" aria-hidden="true"></span>
+    </button>
 
-  <section id="menu">
-    <h2>Nasze Menu</h2>
-
-    <!-- ZESTAWY SUSHI -->
-    <h3>Zestawy Sushi</h3>
-
-    <div class="menu-grid">
-
-      <div class="menu-item">
-        <h4>HITORI – 59 zł</h4>
-        <img src="foto/Post nr 2 zestawy/2.png" class="clickable" alt="Hitori zestaw sushi">
-      </div>
-
-      <div class="menu-item">
-        <h4>FUTARI – 109 zł</h4>
-        <img src="foto/Post nr 2 zestawy/3.png" class="clickable" alt="Futari zestaw sushi">
-      </div>
-
-      <div class="menu-item">
-        <h4>FUTARI YAKITORI – 115 zł</h4>
-        <img src="foto/Post nr 2 zestawy/4.png" class="clickable" alt="Futari Yakitori zestaw sushi">
-      </div>
-
-      <div class="menu-item">
-        <h4>FUTARI MIDORI – 95 zł 🍃</h4>
-        <img src="foto/Post nr 2 zestawy/5.png" class="clickable" alt="Futari Midori zestaw sushi">
-      </div>
-
-      <div class="menu-item">
-        <h4>KIZUNA – 149 zł</h4>
-        <img src="foto/Post nr 2 zestawy/6.png" class="clickable" alt="Kizuna zestaw sushi">
-      </div>
-
-      <div class="menu-item">
-        <h4>KAZOKU – 219 zł</h4>
-        <img src="foto/Post nr 2 zestawy/7.png" class="clickable" alt="Kazoku zestaw sushi">
-      </div>
-
-      <div class="menu-item">
-        <h4>JAKANA PARTY – 269 zł</h4>
-        <img src="foto/Post nr 2 zestawy/8.png" class="clickable" alt="Jakana Party zestaw sushi">
-      </div>
-
-      <div class="menu-item">
-        <h4>TAKUSAN – 349 zł</h4>
-        <img src="foto/Post nr 2 zestawy/9.png" class="clickable" alt="Takusan zestaw sushi">
-      </div>
-
-    </div>
-
-    <!-- LUNCH -->
-    <h3>Lunch</h3>
-    <p><em>Szybki posiłek do pracy, szkoły — dostępny od poniedziałku do piątku w godzinach 12:00–15:00</em></p>
-    <div class="menu-grid">
-      <div class="menu-item">
-        <h4>Klasyczny – 39 zł</h4>
-        <h5>Futomak Sake Philadelphia, Nigiri Sake, Sajgonki 2 szt., Goma Wakame.</h5>
-        <img src="foto/klasyczny.jpg" class="clickable" alt="Sake Kabayaki">
-      </div>
-      <div class="menu-item">
-        <h4>Pieczony – 39 zł</h4>
-        <h5>Futomak Sake Kabayaki, Nigiri Sake Yaki, Sajgonki 2 szt., Goma Wakame.</h5>
-        <img src="foto/pieczony.jpg" class="clickable" alt="Sake Kabayaki">
-      </div>
-      <div class="menu-item">
-        <h4>Wegetariański – 39 zł</h4>
-        <h5>Futomak Sweet Veggie, Nigiri Awokado, Sajgonki 2 szt., Goma Wakame.</h5>
-        <img src="foto/wegetariański.jpg" class="clickable" alt="Sake Kabayaki">
-      </div>
-    </div>
-
-    <!-- PRZYSTAWKI -->
-    <h3>Przystawki</h3>
-    <ul>
-      <li>Sajgonki 6 szt. z warzywami – 15 zł🍃</li>
-      <li>Pierożki Gyoza 6 szt. z warzywami – 15 zł / z wieprzowiną – 20 zł</li>
-      <li>Krewetki w panko 6 szt. – 30 zł / 10 szt. – 55 zł</li>
-      <li>Warzywa w tempurze 10 szt. – 15 zł🍃</li>
-      <li>Tatar z łososia 150 g – 36 zł</li>
-      <li>Edamame fasolki 200 g – 15 zł🍃</li>
-      <li>Goma Wakame 150 g – 10 zł🍃</li>
-    </ul>
-
-    <!-- SASHIMI -->
-    <h3>Sashimi</h3>
-    <ul>
-      <li>Sashimi Sake (łosoś 6 szt.) – 35 zł</li>
-      <li>Sashimi Maguro (tuńczyk 6 szt.) – 40 zł</li>
-      <li>Sashimi Deluxe (szef poleca 15 szt.) – 75 zł</li>
-    </ul>
-
-    <!-- FUTOMAKI -->
-    <h3>Futomaki (6 szt.)</h3>
-    <div class="menu-grid">
-
-      <div class="menu-item">
-        <h4>Sake Philadelphia</h4>
-        <h5>łosoś, ogórek, awokado, sałata, serek- 30zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 2.PNG" class="clickable" alt="Sake Philadelphia">
-      </div>
-
-      <div class="menu-item">
-        <h4>Sake Kabayaki</h4>
-        <h5>łosoś pieczony, ogórek, awokado,sałata, marynowana tykwa, serek - sos kabayaki - 30 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 3.PNG" class="clickable" alt="Sake Kabayaki">
-      </div>
-
-      <div class="menu-item">
-        <h4>SAKE TEN</h4>
-        <h5>łosoś w tempurze, ogórek, awokado, mango, groszek cukrowy, spicy mayo - pulpa mango — 31 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 4.PNG" class="clickable" alt="SAKE TEN">
-      </div>
-
-      <div class="menu-item">
-        <h4>MAGURO PHILADELPHIA</h4>
-        <h5>tuńczyk, ogórek, awokado, sałata, oshinko, serek — 34 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 5.PNG" class="clickable" alt="MAGURO PHILADELPHIA">
-      </div>
-
-      <div class="menu-item">
-        <h4>MAGURO TEN</h4>
-        <h5>tuńczyk w panko, ogórek, awokado, oshinko, groszek cukrowy, spicy mayo – sos kabayaki — 35 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 6.PNG" class="clickable" alt="MAGURO TEN">
-      </div>
-
-      <div class="menu-item">
-        <h4>SPICY MAGURO🌶️</h4>
-        <h5>tuńczyk, ogórek, awokado, sałata, oshinko, chilli, serek wasabi – kizami wasabi — 35 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 7.PNG" class="clickable" alt="SPICY MAGURO">
-      </div>
-
-      <div class="menu-item">
-        <h4>EBI PANKO</h4>
-        <h5>krewetka w panko, ogórek, awokado, mango, tobiko, spicy mayo - pulpa mango — 35 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 8.PNG" class="clickable" alt="EBI PANKO">
-      </div>
-
-      <div class="menu-item">
-        <h4>EBI SAKE</h4>
-        <h5>krewetka w panko, łosoś, ogórek, awokado, sałata, szczypiorkowy mayo - szczypiorek — 38 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 9.PNG" class="clickable" alt="EBI SAKE">
-      </div>
-
-      <div class="menu-item">
-        <h4>SAKE TATAR</h4>
-        <h5>tatar z łososia, ogórek, awokado, serek wasabi - szczypiorek — 32 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 10.PNG" class="clickable" alt="SAKE TATAR">
-      </div>
-
-      <div class="menu-item">
-        <h4>TARA TEN</h4>
-        <h5>dorsz w panko, ogórek, awokado, sałata, oshinko, serek wasabi — 30 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 11.PNG" class="clickable" alt="TARA TEN">
-      </div>
-
-      <div class="menu-item">
-        <h4>SPARKLING TUNA</h4>
-        <h5>tatar z tuńczyka, ogórek, oshinko, spicy mayo – biały sezam — 36 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 12.PNG" class="clickable" alt="SPARKLING TUNA">
-      </div>
-
-      <div class="menu-item">
-        <h4>CHICKEN KAARAGE🐔</h4>
-        <h5>kurczak w panko, ogórek, awokado, sałata, orzechowy mayo – orzechy ziemne — 29 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 16.PNG" class="clickable" alt="CHICKEN KAARAGE">
-      </div>
-
-      <div class="menu-item">
-        <h4>JAKANA DILL</h4>
-        <h5>łosoś z sojowo-koperkowej zalewy, ogórek, awokado, marynowana czerwona cebula, shitake, serek - koperek — 32
-          zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 13.PNG" class="clickable" alt="JAKANA DILL">
-      </div>
-
-      <div class="menu-item">
-        <h4>SWEET VEGGIE 🍃</h4>
-        <h5>batat, ogórek, awokado, sałata, oshinko, marynowana tykwa, marynowana czerwona cebula, serek - sos kabayaki
-          — 26 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 14.PNG" class="clickable" alt="SWEET VEGGIE">
-      </div>
-
-      <div class="menu-item">
-        <h4>MIDORI TEN 🍃</h4>
-        <h5>szparag w tempurze, ogórek, awokado, sałata, groszek cukrowy, szczypiorkowy mayo - szczypiorek — 26 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 15.PNG" class="clickable" alt="MIDORI TEN">
-      </div>
-
-    </div>
-
-    <!-- KABURAMAKI -->
-    <h3>Kaburamaki (Specjały, 8 szt.)</h3>
-    <div class="menu-grid">
-      <div class="menu-item">
-        <h4>EBI SAKE TATAR</h4>
-        <h5>krewetka w panko, ogórek, awokado, spicy mayo – tatar z łososia, szczypiorek — 47 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 45.PNG" class="clickable" alt="EBI SAKE TATAR">
-      </div>
-    
-      <div class="menu-item">
-        <h4>EBI MANGO ROLL</h4>
-        <h5>krewetka w panko, ogórek, awokado, spicy mayo - salsa mango, pistacje, pulpa mango — 47 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 41.PNG" class="clickable" alt="EBI MANGO ROLL">
-      </div>
-    
-      <div class="menu-item">
-        <h4>RAINBOW ROLL</h4>
-        <h5>krewetka w panko, ogórek, awokado, szczypiorkowy mayo - łosoś, tuńczyk, krewetka, awokado — 49 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 46.PNG" class="clickable" alt="RAINBOW ROLL">
-      </div>
-    
-      <div class="menu-item">
-        <h4>AWOKADO SPECIAL ROLL</h4>
-        <h5>krewetka w panko, ogórek, awokado, spicy mayo - awokado, sos kabayaki, mix sezam — 45 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 42.PNG" class="clickable" alt="AWOKADO SPECIAL ROLL">
-      </div>
-    
-      <div class="menu-item">
-        <h4>SAKE SPECIAL ROLL</h4>
-        <h5>ogórek, awokado, szparag w tempurze, serek szczypiorkowy - łosoś opalany, czosnek — 45 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 44.PNG" class="clickable" alt="SAKE SPECIAL ROLL">
-      </div>
-    
-      <div class="menu-item">
-        <h4>DOUBLE TUNA ROLL🌶️</h4>
-        <h5>tuńczyk, ogórek, awokado, spicy mayo - tuńczyk, kizami wasabi — 51 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 43.PNG" class="clickable" alt="DOUBLE TUNA ROLL">
-      </div>
-    
-      <div class="menu-item">
-        <h4>JAKANA SPECIAL ROLL</h4>
-        <h5>ogórek, awokado, groszek cukrowy, serek – łosoś z sojowo-koperkowej zalewy, marynowana czerwona cebula, shitake,
-          koperek — 45 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 40.PNG" class="clickable" alt="JAKANA SPECIAL ROLL">
-      </div>
-    </div>
-
-    <!-- NIGIRI -->
-    <h3>Nigiri (2 szt.)</h3>
-    <div class="menu-grid">
-      <div class="menu-item">
-        <h4>SAKE</h4>
-        <h5>łosoś — 12 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 17.PNG" class="clickable" alt="SAKE">
-      </div>
-
-      <div class="menu-item">
-        <h4>SAKE YAKI</h4>
-        <h5>łosoś opalany — 12 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 18.PNG" class="clickable" alt="SAKE YAKI">
-      </div>
-
-      <div class="menu-item">
-        <h4>MAGURO</h4>
-        <h5>tuńczyk — 13 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 19.PNG" class="clickable" alt="MAGURO">
-      </div>
-
-      <div class="menu-item">
-        <h4>EBI</h4>
-        <h5>krewetka — 14 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 20.PNG" class="clickable" alt="EBI">
-      </div>
-
-      <div class="menu-item">
-        <h4>AWOKADO🍃</h4>
-        <h5>awokado — 11 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 21.PNG" class="clickable" alt="AWOKADO">
-      </div>
-    </div>
-
-
-    <!-- URAMAKI -->
-    <h3>Uramaki (8 szt.)</h3>
-    <div class="menu-grid">
-      <div class="menu-item">
-        <h4>SAKE ROLL</h4>
-        <h5>łosoś, ogórek, awokado, sałata, serek – biały sezam — 32 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 30.PNG" class="clickable" alt="SAKE ROLL">
-      </div>
-    
-      <div class="menu-item">
-        <h4>SAKE YAKI ROLL</h4>
-        <h5>łosoś pieczony, ogórek, awokado, marynowana tykwa, szczypiorkowy mayo – szczypiorek — 32 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 29.PNG" class="clickable" alt="SAKE YAKI ROLL">
-      </div>
-    
-      <div class="menu-item">
-        <h4>MAGURO ROLL</h4>
-        <h5>tuńczyk, ogórek, oshinko, spicy mayo – kimchi sezam — 36 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 31.PNG" class="clickable" alt="MAGURO ROLL">
-      </div>
-    
-      <div class="menu-item">
-        <h4>CRISPY EBI</h4>
-        <h5>krewetka w panko, ogórek, awokado, spicy mayo – mix sezam — 37 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 37.PNG" class="clickable" alt="CRISPY EBI">
-      </div>
-    
-      <div class="menu-item">
-        <h4>EBI NUTTY</h4>
-        <h5>krewetka w panko, ogórek, awokado, orzechowy mayo – orzeszki ziemne — 36 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 35.PNG" class="clickable" alt="EBI NUTTY">
-      </div>
-    
-      <div class="menu-item">
-        <h4>SAKE NUTTY</h4>
-        <h5>łosoś w tempurze, ogórek, awokado, serek – pistacje — 35 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 36.PNG" class="clickable" alt="SAKE NUTTY">
-      </div>
-    
-      <div class="menu-item">
-        <h4>CRUNCHY MAGURO</h4>
-        <h5>tuńczyk w panko, ogórek, oshinko, spicy mayo – kataifii, sos kabayaki — 37 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 39.PNG" class="clickable" alt="CRUNCHY MAGURO">
-      </div>
-    
-      <div class="menu-item">
-        <h4>YASAI ROLL</h4>
-        <h5>szparag w tempurze, ogórek, awokado, marynowana tykwa, marynowana czerwona cebula - szczypiorek i biały sezam —
-          28 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 34.PNG" class="clickable" alt="YASAI ROLL">
-      </div>
-    
-      <div class="menu-item">
-        <h4>CRUNCHY CHICKEN🌶️</h4>
-        <h5>kurczak w panko, ogórek, awokado, spicy mayo – kataifii, crunchy chilli — 31 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 32.PNG" class="clickable" alt="CRUNCHY CHICKEN">
-      </div>
-    
-      <div class="menu-item">
-        <h4>CALIFORNIA ROLL</h4>
-        <h5>krewetka gotowana, ogórek, awokado, groszek cukrowy, serek wasabi - tobiko pomarańczowe, mix sezam — 38 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 33.PNG" class="clickable" alt="CALIFORNIA ROLL">
-      </div>
-    
-      <div class="menu-item">
-        <h4>TARA ROLL</h4>
-        <h5>dorsz w panko, ogórek, oshinko, serek szczypiorkowy – sezam czarny — 32 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 38.PNG" class="clickable" alt="TARA ROLL">
-      </div>
-    </div>
-
-    <!-- HOSOMAKI -->
-    <h3>Hosomaki (8 szt.)</h3>
-    <div class="menu-item">
-      <div class="menu-item">
-        <h4>SAKE MAKI</h4>
-        <h5>łosoś — 17 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 24.PNG" class="clickable" alt="SAKE MAKI">
-      </div>
-
-      <div class="menu-item">
-        <h4>EBI MAKI</h4>
-        <h5>krewetka — 19 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 22.PNG" class="clickable" alt="EBI MAKI">
-      </div>
-
-      <div class="menu-item">
-        <h4>NEGI MAGURO MAKI</h4>
-        <h5>tuńczyk — 19 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 23.PNG" class="clickable" alt="NEGI MAGURO MAKI">
-      </div>
-
-      <div class="menu-item">
-        <h4>VEGE MAKI – OGÓREK🍃</h4>
-        <h5>ogórek — 15 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 25.PNG" class="clickable" alt="VEGE MAKI OGÓREK">
-      </div>
-
-      <div class="menu-item">
-        <h4>VEGE MAKI – AWOKADO🍃</h4>
-        <h5>awokado — 15 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 28.PNG" class="clickable" alt="VEGE MAKI AWOKADO">
-      </div>
-
-      <div class="menu-item">
-        <h4>VEGE MAKI – TYKWA🍃</h4>
-        <h5> tykwa — 15 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 26.PNG" class="clickable" alt="VEGE MAKI TYKWA">
-      </div>
-
-      <div class="menu-item">
-        <h4>VEGE MAKI – OSHINKO🍃</h4>
-        <h5>oshinko — 15 zł</h5>
-        <img src="foto/Rolki na strone/Wielkie otwarcie! - 27.PNG" class="clickable" alt="VEGE MAKI OSHINKO">
-      </div>
-    </div>
-
-    <!-- DESERY I SOSY -->
-    <h3>Desery</h3>
-    <ul>
-      <li>Sernik Yuzu – 15 zł (japoński sernik na zimno)</li>
-    </ul>
-
-    <h3>Sosy i dodatki</h3>
-    <ul>
-      <li>Sos kabayaki – 2 zł</li>
-      <li>Sos spice mayo – 2 zł</li>
-      <li>Sos szczypiorkowy mayo – 2 zł</li>
-      <li>Sos sweet chili – 2 zł</li>
-      <li>Sos kyoto – 2 zł</li>
-      <li>Sos sriracha – 3 zł</li>
-      <li>Pulpa mango – 2 zł</li>
-      <li>Tobiko – 8 zł</li>
-      <li>Kizami wasabi – 10 zł</li>
-    </ul>
-  </section>
-
-  <section id="about" class="about">
-    <div class="about-intro">
-      <h2>O nas</h2>
-      <p>
-        W <b>JAKANA SUSHI</b> wierzymy, że <b>sushi to nie tylko jedzenie — to doświadczenie, które łączy smaki, ludzi i
-          pasję do
-          gotowania.</b> Od pierwszego dnia naszym celem było stworzenie miejsca, w którym tradycja japońska spotyka się
-        z
-        polskim podejściem do smaków, a najwyższa jakość idzie w parze z przystępną ceną.
-      </p>
-      <p>
-        Jesteśmy <b>Jakub Odrzywolski i Anna Kapuścińska</b>, współzałożyciele <b>JAKANA SUSHI</b>.
-      </p>
-    </div>
-
-    <div class="chefs">
-      <div class="chef">
-        <img src="foto/8.png" alt="Anna Kapuścińska">
-        <div>
-          <h3>Anna</h3>
-          <p>
-            Jestem specjalistką kuchni japońskiej z <b>10-letnim doświadczeniem</b> zdobytym zarówno w Polsce, jak i za
-            granicą. Pierwszym etapem mojej kariery był 6-letni okres pracy w renomowanej sieci <b>Sticks & Sushi w
-              Kopenhadze (Dania)</b> - jednym z najbardziej uznanych konceptów gastronomicznych specjalizujących się w
-            sushi i
-            kuchni japońskiej w Europie. Praca w międzynarodowym środowisku, w restauracjach o wysokim standardzie
-            obsługi, umożliwiła mi poznanie najnowszych trendów kulinarnych, rozwój umiejętności technicznych oraz
-            opanowanie efektywnego zarządzania procesami gastronomicznymi na dużą skalę. Istotnym elementem rozwoju
-            zawodowego była również <b>dwuletnia wewnętrzna szkoła Sushi i Yakitori w Danii</b>, zakończona egzaminem
-            potwierdzającym umiejętności. Udział w tym programie pozwolił mi na zdobycie specjalistycznej wiedzy i
-            certyfikowanych kwalifikacji w zakresie kuchni japońskiej. Kolejnym ważnym doświadczeniem był 3-letni okres
-            pracy w restauracji <b>Itamae w Oświęcimiu</b>, gdzie zdobyłam solidne podstawy w zakresie przygotowania
-            sushi,
-            organizacji pracy kuchni oraz obsługi klienta w branży gastronomii japońskiej w Polsce.
-          </p>
-        </div>
-      </div>
-
-      <div class="chef">
-        <img src="foto/4.png" alt="Jakub Odrzywolski">
-        <div>
-          <h3>Jakub</h3>
-          <p>
-            Jestem doświadczonym sushi master z <b>10-letnią praktyką w kuchni japońskiej</b>. Swoją drogę zawodową
-            rozpocząłem
-            od <b>solidnych podstaw edukacyjnych</b> - ukończyłem szkołę o profilu gastronomicznym, uzyskując tytuł
-            <b>Technika
-              żywienia i usług gastronomicznych</b> oraz potwierdzając swoje umiejętności zdanym egzaminem zawodowym.
-            Kluczowym etapem zawodowym okazała się 9-letnia praca w restauracji <b>Itamae w Oświęcimiu</b>,
-            specjalizującej się
-            w sushi i kuchni japońskiej. To właśnie tam, dzięki codziennemu obcowaniu z wymagającymi standardami jakości
-            i oczekiwaniami klientów, zdobywałem praktyczne doświadczenie w przygotowywaniu sushi i autentycznych dań
-            kuchni japońskiej. Ostatnie <b>1,5 roku pracy na stanowisku szefa kuchni</b> to czas, w którym nie tylko
-            doskonaliłem swoje rzemiosło, ale również nabyłem potrzebne mi kompetencje menedżerskie. Zarządzałem
-            zespołem kucharzy, odpowiadałem za koordynację pracy kuchni, nadzór nad jakością potraw oraz szkolenie
-            nowych pracowników.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="chef">
-      <div>
-        <p>
-          Przez lata współpracy w restauracji w Oświęcimiu rozwijaliśmy swoje umiejętności, aż w końcu powstał pomysł na
-          <b>JAKANA SUSHI</b> —
-          miejsce, w którym kreatywność, pasja i radość dzielenia się jedzeniem stają się codziennością.
-        </p>
-      </div>
-    </div>
-
-    <div class="chef">
-      <div>
-        <p>
-          Naszą misją jest popularyzowanie sushi w przystępnej formie, dostarczanie jedzenia premium na wynos oraz
-          tworzenie wyjątkowych wydarzeń —
-          od kameralnych spotkań, przez urodziny i bankiety, po wesela i eventy firmowe. Menu zostało zaprojektowane
-          tak, aby każdy znalazł coś dla siebie:
-          klasyczne sashimi i nigiri, rolki z surową i pieczoną rybą, propozycje wegetariańskie, ciepłe przystawki,
-          sajgonki, pierożki i krewetki w tempurze.
-        </p>
-      </div>
-    </div>
-
-    <div class="chef">
-      <div>
-        <p>
-          Nasz lokal znajduje się na granicy <b>Brzeszcz i Jawiszowic</b>, przy ul. Ofiar Oświęcimia 4, tuż obok
-          przystanku
-          „Pod Górnikiem”.
-          Zapraszamy wszystkich mieszkańców Brzeszcz, Jawiszowic i okolicznych miejscowości. Jeśli nie możesz nas
-          odwiedzić osobiście,
-          zadzwoń — zajmiemy się wszystkim i dostarczymy sushi pod Twoje drzwi.
-        </p>
-      </div>
-    </div>
-
-    <div class="chef">
-      <div>
-        <p>
-          W JAKANA SUSHI wierzymy, że gotowanie to przede wszystkim pasja i radość dzielenia się nią z innymi —
-          dlatego codziennie staramy się, aby każdy kęs był wyjątkowy.
-        </p>
-      </div>
-    </div>
-    </div>
-  </section>
-
-
-  <section id="contact" class="contact">
-    <h2>Kontakt</h2>
-    <p>📍 ul. Ofiar Oświęcimia 4, Jawiszowice, Poland</p>
-    <p>📞 +48 455 516 945</p>
-    <p>✉️ kontakt@jakanasushi.pl</p>
-    <iframe src="https://www.google.com/maps?q=ul.Ofiar%20Oświęcimia%204,%20Jawiszowice,%20Poland&output=embed"
-      width="100%" height="300" style="border:0; margin-top:20px;" allowfullscreen="" loading="lazy"></iframe>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 JAKANA SUSHI</p>
-    <div class="socials">
-      <a href="https://www.facebook.com/profile.php?id=61581330644887" target="_blank"><i
-          class="fab fa-facebook-f"></i></a>
-      <a href="https://instagram.com/jakana_sushi" target="_blank"><i class="fab fa-instagram"></i></a>
-    </div>
-  </footer>
-
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog">
-    <img id="lightbox-img" src="" alt="Powiększone zdjęcie">
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const toggle = document.querySelector('.menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      if (toggle && navLinks) {
-        toggle.addEventListener('click', () => navLinks.classList.toggle('active'));
-      }
+  <hr class="border-t-2 border-red-600 w-full" aria-hidden="true">
 
-      const images = document.querySelectorAll('.menu-grid img, .gallery-grid img');
-      images.forEach(img => img.classList.add('clickable'));
+  <!-- Menu mobilne -->
+  <div id="mobile-menu"
+       class="md:hidden hidden bg-white text-black px-5 flex flex-col gap-3 py-2"
+       role="navigation"
+       aria-label="Menu mobilne">
+    <a href="#menu-container" class="hover:text-red-600 transition-colors">Menu</a>
+    <a href="#galeria" class="hover:text-red-600 transition-colors">Galeria</a>
+    <a href="#o_nas" class="hover:text-red-600 transition-colors">O nas</a>
+    <a href="#kontakt" class="hover:text-red-600 transition-colors">Kontakt</a>
+  </div>
+</header>
 
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightbox-img');
+<script>
+const btn = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
 
-      images.forEach(img => {
-        img.addEventListener('click', (e) => {
-          if (!img.src) return;
-          lightboxImg.src = img.src;
-          lightbox.classList.add('active');
-          lightbox.setAttribute('aria-hidden', 'false');
-          e.stopPropagation();
-        });
-      });
+btn.addEventListener('click', () => {
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !expanded);
+  mobileMenu.classList.toggle('hidden');
+});
+</script>
+ 
+<main class="max-w-[1600px] mx-auto" role="main">
 
-      lightbox.addEventListener('click', closeLightbox);
-      lightboxImg.addEventListener('click', (e) => e.stopPropagation());
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+  <div class="flex justify-center">
+    <img src="images/10.png" alt="Jakana Sushi logo">
+  </div>
 
-      function closeLightbox() {
-        lightbox.classList.remove('active');
-        lightbox.setAttribute('aria-hidden', 'true');
-        lightboxImg.src = '';
-      }
-    });
-  </script>
+<!-- Pasek wyboru sekcji -->
+<div class="flex items-center justify-center px-5 py-8 bg-white">
+  <select id="menuSelect"
+          class="w-full max-w-md md:max-w-xs bg-white text-black font-medium
+                 rounded-lg px-6 py-2 shadow-md
+                 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-600
+                 transition-all cursor-pointer">
+    <option value="">Wybierz sekcję menu...</option>
+    <option value="menu-container">🍣 Menu</option>
+    <option value="lunch-container">🥗 Lunch</option>
+    <option value="appetizers-container">🥟 Przystawki</option>
+    <option value="sashimi-container">🐟 Sashimi</option>
+    <option value="futomaki-container">🍱 Futomaki</option>
+    <option value="kaburamaki-container">🌟 Kaburamaki</option>
+    <option value="nigiri-container">🍤 Nigiri</option>
+    <option value="uramaki-container">🌀 Uramaki</option>
+    <option value="hosomaki-container">🎯 Hosomaki</option>
+    <option value="desserts-container">🍰 Desery</option>
+    <option value="sauces-container">🥢 Sosy i dodatki</option>
+  </select>
+</div>
+
+  <!-- ZESTAWY SUSHI -->
+  <div class="text-center py-5">
+    <h2 class="text-red-600 font-bold text-3xl">Nasze menu</h2>
+    <h3 class="text-red-600 font-semibold text-xl mt-2">Zestawy Sushi</h3>
+  </div>
+  <div id="menu-container" class="flex flex-wrap justify-center gap-6 pb-16"></div>
+
+  <!-- LUNCH -->
+  <div class="text-center pt-5">
+    <h2 class="text-red-600 font-bold text-3xl">Lunch</h2>
+  </div>
+
+   <div class="text-center pb-5">
+    <h2 class="text-black text-md italic">Szybki posiłek do pracy, szkoły — dostępny od poniedziałku do piątku w godzinach 12:00–15:00</h2>
+  </div>
+  <div id="lunch-container" class="flex flex-wrap justify-center gap-8 pb-20"></div>
+
+  <!-- PRZYSTAWKI -->
+  <div class="text-center py-5">
+    <h2 class="text-red-600 font-bold text-3xl">Przystawki</h2>
+  </div>
+  <div id="appetizers-container" class="flex flex-wrap justify-center gap-6 pb-20"></div>
+
+  <!-- SASHIMI -->
+  <div class="text-center py-5">
+    <h2 class="text-red-600 font-bold text-3xl">Sashimi</h2>
+  </div>
+  <div id="sashimi-container" class="flex flex-wrap justify-center gap-6 pb-20"></div>
+
+<!-- FUTOMAKI -->
+<div class="text-center py-5">
+  <h2 class="text-red-600 font-bold text-3xl">Futomaki (6 szt.)</h2>
+</div>
+<div id="futomaki-container" class="flex flex-wrap justify-center gap-6 pb-20"></div>
+
+<!-- KABURAMAKI -->
+<div class="text-center py-5">
+  <h2 class="text-red-600 font-bold text-3xl">Kaburamaki (Specjały, 8 szt.)</h2>
+</div>
+<div id="kaburamaki-container" class="flex flex-wrap justify-center gap-6 pb-20"></div>
+
+<!-- NIGIRI -->
+<div class="text-center py-5">
+  <h2 class="text-red-600 font-bold text-3xl">Nigiri (2 szt.)</h2>
+</div>
+
+<div id="nigiri-container" class="flex flex-wrap justify-center gap-6 pb-20"></div>
+
+<div class="text-center py-5">
+  <h2 class="text-red-600 font-bold text-3xl">Uramaki (8 szt.)</h2>
+</div>
+
+<div id="uramaki-container" class="flex flex-wrap justify-center gap-6 pb-20"></div>
+
+<div class="text-center py-5">
+  <h2 class="text-red-600 font-bold text-3xl">Hosomaki (8 szt.)</h2>
+</div>
+
+<div id="hosomaki-container" class="flex flex-wrap justify-center gap-6 pb-20"></div>
+
+<!-- Desery -->
+<div class="text-center py-5">
+  <h2 class="text-red-600 font-bold text-3xl">Desery</h2>
+</div>
+
+<div id="desserts-container" class="flex flex-wrap justify-center gap-6 pb-20"></div>
+
+<!-- Sosy i dodatki -->
+<div class="text-center py-5">
+  <h2 class="text-red-600 font-bold text-3xl">Sosy i dodatki</h2>
+</div>
+
+<div id="sauces-container" class="flex flex-wrap justify-center gap-6 pb-20"></div>
+
+<!-- GALERIA -->
+<section id="galeria" class="max-w-[1600px] mx-auto px-5">
+  <div class="text-center mb-12" data-aos="fade-up">
+    <h2 class="text-red-600 font-bold text-3xl">Galeria</h2>
+    <p class="text-gray-600 mt-2">Nasze sushi, lokal i realizacje</p>
+  </div>
+
+  <!-- Slider -->
+  <div class="relative overflow-hidden" data-aos="fade-up">
+    
+    <div id="gallery-track" class="flex transition-transform duration-700 ease-in-out">
+    </div>
+
+    <!-- Strzałki -->
+    <div class="flex justify-center gap-6 mt-6">
+  <!-- Lewa -->
+  <button id="prevSlide"
+    class="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center
+           text-2xl transition-all duration-300
+           hover:bg-red-700 disabled:opacity-40 disabled:cursor-not-allowed">
+    ❮
+  </button>
+
+  <!-- Prawa -->
+  <button id="nextSlide"
+    class="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center
+           text-2xl transition-all duration-300
+           hover:bg-red-700 disabled:opacity-40 disabled:cursor-not-allowed">
+    ❯
+  </button>
+</div>
+
+  </div>
+</section>
+
+<!-- O nas  -->
+<div class="max-w-[1600px] mx-auto mt-4 px-5" id="o_nas">
+  <div class="text-center mb-12">
+    <h2 class="text-red-600 font-bold text-3xl">O nas</h2>
+  </div>
+
+  <!-- Wprowadzenie (tylko tekst) -->
+  <div class="mb-12 text-gray-700">
+    <p class="mb-1 leading-relaxed text-center">
+      W <strong>JAKANA SUSHI</strong> wierzymy, że sushi to nie tylko jedzenie — to doświadczenie, które łączy smaki, ludzi i pasję do gotowania. Od pierwszego dnia naszym celem było stworzenie miejsca, w którym tradycja japońska spotyka się z polskim podejściem do smaków, a najwyższa jakość idzie w parze z przystępną ceną.
+    </p>
+    <p class="leading-relaxed text-center">
+      Jesteśmy <strong>Jakub Odrzywolski</strong> i <strong>Anna Kapuścińska</strong>, współzałożyciele <strong>JAKANA SUSHI</strong>.
+    </p>
+  </div>
+
+  <!-- Anna Kapuścińska -->
+  <div class="group flex flex-col md:flex-row items-center gap-6 mb-12
+              bg-white rounded-2xl shadow-md p-6 border border-gray-200
+              transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]">
+    <div class="flex-shrink-0">
+      <img src="images/Zdjecia_onas/1.png" alt="Anna Kapuścińska"
+        class="rounded-full w-28 h-28 object-cover border-4 border-red-600 shadow-md transition-transform duration-300 group-hover:scale-105">
+    </div>
+    <div class="text-gray-700 md:flex-1">
+      <h3 class="text-xl font-semibold mb-2 text-center">Anna Kapuścińska</h3>
+      <p class="leading-relaxed text-center">
+        Jestem specjalistką kuchni japońskiej z 10-letnim doświadczeniem zdobytym zarówno w Polsce, jak i za granicą. 
+        Pierwszym etapem mojej kariery był 6-letni okres pracy w renomowanej sieci Sticks & Sushi w Kopenhadze (Dania) - jednym z najbardziej uznanych konceptów gastronomicznych specjalizujących się w sushi i kuchni japońskiej w Europie. 
+        Praca w międzynarodowym środowisku, w restauracjach o wysokim standardzie obsługi, umożliwiła mi poznanie najnowszych trendów kulinarnych, rozwój umiejętności technicznych oraz opanowanie efektywnego zarządzania procesami gastronomicznymi na dużą skalę. 
+        Istotnym elementem rozwoju zawodowego była również dwuletnia wewnętrzna szkoła Sushi i Yakitori w Danii, zakończona egzaminem potwierdzającym umiejętności. 
+        Udział w tym programie pozwolił mi na zdobycie specjalistycznej wiedzy i certyfikowanych kwalifikacji w zakresie kuchni japońskiej. 
+        Kolejnym ważnym doświadczeniem był 3-letni okres pracy w restauracji Itamae w Oświęcimiu, gdzie zdobyłam solidne podstawy w zakresie przygotowania sushi, organizacji pracy kuchni oraz obsługi klienta w branży gastronomii japońskiej w Polsce.
+      </p>
+    </div>
+  </div>
+
+  <!-- Jakub Odrzywolski -->
+  <div class="group flex flex-col md:flex-row items-center gap-6 mb-12
+              bg-white rounded-2xl shadow-md p-6 border border-gray-200
+              transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]">
+    <div class="flex-shrink-0">
+      <img src="images/Zdjecia_onas/2.png" alt="Jakub Odrzywolski"
+        class="rounded-full w-28 h-28 object-cover border-4 border-red-600 shadow-md transition-transform duration-300 group-hover:scale-105">
+    </div>
+    <div class="text-gray-700 md:flex-1">
+      <h3 class="text-xl font-semibold mb-2 text-center">Jakub Odrzywolski</h3>
+      <p class="leading-relaxed text-center">
+        Jestem doświadczonym sushi master z 10-letnią praktyką w kuchni japońskiej. 
+        Swoją drogę zawodową rozpocząłem od solidnych podstaw edukacyjnych - ukończyłem szkołę o profilu gastronomicznym, uzyskując tytuł Technika żywienia i usług gastronomicznych oraz potwierdzając swoje umiejętności zdanym egzaminem zawodowym. 
+        Kluczowym etapem zawodowym okazała się 9-letnia praca w restauracji Itamae w Oświęcimiu, specjalizującej się w sushi i kuchni japońskiej. 
+        To właśnie tam, dzięki codziennemu obcowaniu z wymagającymi standardami jakości i oczekiwaniami klientów, zdobywałem praktyczne doświadczenie w przygotowywaniu sushi i autentycznych dań kuchni japońskiej. 
+        Ostatnie 1,5 roku pracy na stanowisku szefa kuchni to czas, w którym nie tylko doskonaliłem swoje rzemiosło, ale również nabyłem potrzebne mi kompetencje menedżerskie. 
+        Zarządzałem zespołem kucharzy, odpowiadałem za koordynację pracy kuchni, nadzór nad jakością potraw oraz szkolenie nowych pracowników.
+      </p>
+    </div>
+  </div>
+
+  <!-- Misja i lokalizacja -->
+  <div class="mb-12 text-gray-700">
+    <p class="group flex flex-col md:flex-row items-center gap-6 mb-12
+              bg-white rounded-2xl shadow-md p-6 border border-gray-200
+              transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] text-center">
+      Przez lata współpracy w restauracji w Oświęcimiu rozwijaliśmy swoje umiejętności, aż w końcu powstał pomysł na JAKANA SUSHI — miejsce, w którym kreatywność, pasja i radość dzielenia się jedzeniem stają się codziennością.
+Naszą misją jest popularyzowanie sushi w przystępnej formie, dostarczanie jedzenia premium na wynos oraz tworzenie wyjątkowych wydarzeń — od kameralnych spotkań, przez urodziny i bankiety, po wesela i eventy firmowe. Menu zostało zaprojektowane tak, aby każdy znalazł coś dla siebie: klasyczne sashimi i nigiri, rolki z surową i pieczoną rybą, propozycje wegetariańskie, ciepłe przystawki, sajgonki, pierożki i krewetki w tempurze.
+Nasz lokal znajduje się na granicy Brzeszcz i Jawiszowic, przy ul. Ofiar Oświęcimia 4, tuż obok przystanku „Pod Górnikiem”. Zapraszamy wszystkich mieszkańców Brzeszcz, Jawiszowic i okolicznych miejscowości. Jeśli nie możesz nas odwiedzić osobiście, zadzwoń — zajmiemy się wszystkim i dostarczymy sushi pod Twoje drzwi.
+W JAKANA SUSHI wierzymy, że gotowanie to przede wszystkim pasja i radość dzielenia się nią z innymi — dlatego codziennie staramy się, aby każdy kęs był wyjątkowy.
+    </p>
+  </div>
+</div>
+
+<!-- Kontakt -->
+<div class="max-w-[1600px] mx-auto py-16 px-5">
+  <div class="text-center mb-12" id="kontakt">
+    <h2 class="text-red-600 font-bold text-3xl">Kontakt</h2>
+  </div>
+
+  <div class="group flex flex-col md:flex-row items-center gap-6
+              bg-white rounded-2xl shadow-md p-6 border border-gray-200
+              transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]">
+
+    <!-- Mapa -->
+    <div class="flex-shrink-0 md:w-1/2 h-64 md:h-80 rounded-2xl overflow-hidden border border-gray-300 shadow-inner">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2559.2833729304573!2d19.020567076528547!3d49.945989879396455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471697af04593b9b%3A0xe1566e0f2642d33f!2sOfiar%20O%C5%9Bwi%C4%99cimia%204%2C%2043-210%20Jawiszowice%2C%20Polska!5e0!3m2!1spl!2spl!4v1704238323456!5m2!1spl!2spl"
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        class="rounded-2xl"></iframe>
+    </div>
+
+    <!-- Dane kontaktowe -->
+    <div class="md:flex-1 text-gray-700">
+      <p class="text-lg mb-3"><span class="font-semibold">📍 Adres:</span> ul. Ofiar Oświęcimia 4, Jawiszowice, Poland</p>
+      <p class="text-lg mb-3"><span class="font-semibold">📞 Telefon:</span> +48 455 516 945</p>
+      <p class="text-lg"><span class="font-semibold">✉️ E-mail:</span> jakana.sushi@gmail.com</p>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-white mt-16">
+  <hr class="border-t-2 border-red-600 mb-6">
+  
+  <div class="max-w-[1600px] mx-auto px-5 py-6 flex flex-col md:flex-row items-center justify-between text-gray-700">
+    
+    <p class="text-sm mb-3 md:mb-0">© 2025 JAKANA SUSHI</p>
+    
+    <div class="flex gap-4">
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/people/𝙹𝙰𝙺𝙰𝙽𝙰-𝚂𝚄𝚂𝙷𝙸/61581330644887/" target="_blank"
+         class="transition-transform duration-300 transform hover:scale-108 rounded-full p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.099 2.796.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.326-.597 1.326-1.326V1.326C24 .597 23.403 0 22.675 0z"/>
+        </svg>
+      </a>
+      
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/jakana_sushi" target="_blank"
+         class="transition-transform duration-300 transform hover:scale-108 rounded-full p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.97.24 2.428.413a4.92 4.92 0 011.675 1.01 4.92 4.92 0 011.01 1.675c.173.458.357 1.258.413 2.428.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.413 2.428a4.92 4.92 0 01-1.01 1.675 4.92 4.92 0 01-1.675 1.01c-.458.173-1.258.357-2.428.413-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.428-.413a4.92 4.92 0 01-1.675-1.01 4.92 4.92 0 01-1.01-1.675c-.173-.458-.357-1.258-.413-2.428C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.056-1.17.24-1.97.413-2.428a4.92 4.92 0 011.01-1.675 4.92 4.92 0 011.675-1.01c.458-.173 1.258-.357 2.428-.413C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.012 7.052.07 5.773.128 4.672.313 3.75.63a6.918 6.918 0 00-2.523 1.642A6.918 6.918 0 00.63 4.795c-.317.922-.502 2.023-.56 3.302C.012 8.332 0 8.741 0 12c0 3.259.012 3.668.07 4.948.058 1.279.243 2.38.56 3.302a6.918 6.918 0 001.642 2.523 6.918 6.918 0 002.523 1.642c.922.317 2.023.502 3.302.56C8.332 23.988 8.741 24 12 24s3.668-.012 4.948-.07c1.279-.058 2.38-.243 3.302-.56a6.918 6.918 0 002.523-1.642 6.918 6.918 0 001.642-2.523c.317-.922.502-2.023.56-3.302.058-1.28.07-1.689.07-4.948s-.012-3.668-.07-4.948c-.058-1.279-.243-2.38-.56-3.302a6.918 6.918 0 00-1.642-2.523 6.918 6.918 0 00-2.523-1.642c-.922-.317-2.023-.502-3.302-.56C15.668.012 15.259 0 12 0zM12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<button id="scrollTopBtn"
+        class="fixed right-5 w-12 h-12 bottom-10 bg-red-600 text-white p-3 rounded-full shadow-lg hover:bg-red-700 transition-colors z-50"
+        aria-label="Przewiń do góry">
+  ↑
+</button>
+
+<script src="menu.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1200,
+    easing: "ease-out-cubic",
+    once: true,
+    offset: 120
+  });
+</script>
 </body>
-
 </html>
+
+
