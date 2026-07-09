@@ -13,7 +13,7 @@
 </head>
 
 <body class="scroll-smooth font-[Poppins] bg-white">
-<header class="sticky top-0 z-50 bg-white shadow-md pt-5" data-aos="fade-down" role="banner">
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-lg pt-5 border-b border-red-100"></header>
   <div class="max-w-[1600px] mx-auto flex items-center justify-between px-5">
 
     <!-- Logo -->
@@ -83,7 +83,8 @@ btn.addEventListener('click', () => {
                  hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-600
                  transition-all cursor-pointer">
     <option value="">Wybierz sekcję menu...</option>
-    <option value="menu-container">🍣 Menu</option>
+    <option value="zestawy-container">🍱 Zestawy</option>
+    <option value="poke-container">🍲 Poke Bowl's</option>
     <option value="lunch-container">🥗 Lunch</option>
     <option value="appetizers-container">🥟 Przystawki</option>
     <option value="sashimi-container">🐟 Sashimi</option>
@@ -92,17 +93,23 @@ btn.addEventListener('click', () => {
     <option value="nigiri-container">🍤 Nigiri</option>
     <option value="uramaki-container">🌀 Uramaki</option>
     <option value="hosomaki-container">🎯 Hosomaki</option>
-    <option value="desserts-container">🍰 Desery</option>
     <option value="sauces-container">🥢 Sosy i dodatki</option>
   </select>
 </div>
 
-  <!-- ZESTAWY SUSHI -->
-  <div class="text-center py-5">
-    <h2 class="text-red-600 font-bold text-3xl">Nasze menu</h2>
-    <h3 class="text-red-600 font-semibold text-xl mt-2">Zestawy Sushi</h3>
-  </div>
-  <div id="menu-container" class="flex flex-wrap justify-center gap-6 pb-16"></div>
+<!-- ZESTAWY -->
+<div id="zestawy-section" class="text-center py-5">
+  <h2 class="text-red-600 font-bold text-3xl">Zestawy</h2>
+</div>
+
+<div id="zestawy-container" class="flex flex-wrap justify-center gap-8 pb-20"></div>
+
+<!-- POKE BOWL'S -->
+ <div id="zestawy-section" class="text-center py-5">
+  <h2 class="text-red-600 font-bold text-3xl">Poke Bowl's</h2>
+</div>
+
+<div id="poke-container" class="flex flex-wrap justify-center gap-6 pb-20"></div>
 
   <!-- LUNCH -->
   <div class="text-center pt-5">
@@ -110,7 +117,7 @@ btn.addEventListener('click', () => {
   </div>
 
    <div class="text-center pb-5">
-    <h2 class="text-black text-md italic">Szybki posiłek do pracy, szkoły — dostępny od poniedziałku do piątku w godzinach 12:00–15:00</h2>
+    <h2 class="text-black text-md italic">Szybki posiłek do pracy, szkoły — dostępny od poniedziałku do piątku w godzinach 12:00–16:00</h2>
   </div>
   <div id="lunch-container" class="flex flex-wrap justify-center gap-8 pb-20"></div>
 
@@ -157,19 +164,13 @@ btn.addEventListener('click', () => {
 
 <div id="hosomaki-container" class="flex flex-wrap justify-center gap-6 pb-20"></div>
 
-<!-- Desery -->
-<div class="text-center py-5">
-  <h2 class="text-red-600 font-bold text-3xl">Desery</h2>
-</div>
-
-<div id="desserts-container" class="flex flex-wrap justify-center gap-6 pb-20"></div>
-
 <!-- Sosy i dodatki -->
 <div class="text-center py-5">
   <h2 class="text-red-600 font-bold text-3xl">Sosy i dodatki</h2>
 </div>
 
 <div id="sauces-container" class="flex flex-wrap justify-center gap-6 pb-20"></div>
+
 
 <!-- GALERIA -->
 <section id="galeria" class="max-w-[1600px] mx-auto px-5">
@@ -339,7 +340,6 @@ W JAKANA SUSHI wierzymy, że gotowanie to przede wszystkim pasja i radość dzie
   ↑
 </button>
 
-<script src="menu.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
   AOS.init({
@@ -349,6 +349,7 @@ W JAKANA SUSHI wierzymy, że gotowanie to przede wszystkim pasja i radość dzie
     offset: 120
   });
 </script>
+<script src="js/menu.js"></script>
 </body>
 </html>
 
