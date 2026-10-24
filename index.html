@@ -449,6 +449,24 @@ const appetizers = [
   }
 ];
 
+const pokeBowls = [
+  {
+    name: { pl: "Fish Bowl", en: "Fish Bowl" },
+    price: "45 zł",
+    image: "images/Bowl_zdjecia/fish bowl 45zl.jpg"
+  },
+  {
+    name: { pl: "Shrimp Bowl", en: "Shrimp Bowl" },
+    price: "49 zł",
+    image: "images/Bowl_zdjecia/shrimp bowl 49zl.jpg"
+  },
+  {
+    name: { pl: "Chicken Bowl", en: "Chicken Bowl" },
+    price: "43 zł",
+    image: "images/Bowl_zdjecia/chicken bowl 43zl.jpg"
+  }
+];
+
 const sashimi = [
   {
     name: { pl: "Sashimi Sake", en: "Sashimi Sake" },
@@ -798,7 +816,31 @@ function renderMenu() {
     });
   }
 
-  // 2. Lunch
+  // 2. Poke bowls
+  const pokeContainer = document.getElementById("poke-container");
+  if (pokeContainer) {
+    pokeContainer.innerHTML = "";
+    pokeBowls.forEach(item => {
+      const name = getText(item.name, currentLang);
+      const card = document.createElement("div");
+      card.className = `
+        group bg-white rounded-2xl border border-gray-200 shadow-md p-6
+        w-[92%] sm:w-[50%] md:w-[45%] lg:w-[36%] max-w-[430px] text-center
+        transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]
+      `;
+      card.innerHTML = `
+        <div class="w-full overflow-hidden rounded-xl">
+          <img src="${item.image}" alt="${name}" loading="lazy"
+            class="w-full h-64 object-contain transition-transform duration-300 group-hover:scale-105">
+        </div>
+        <h3 class="text-2xl font-semibold text-gray-800 mt-4">${name}</h3>
+        <p class="text-red-600 font-bold text-2xl mt-2">${item.price}</p>
+      `;
+      pokeContainer.appendChild(card);
+    });
+  }
+
+  // 3. Lunch
   const lunchContainer = document.getElementById("lunch-container");
   if (lunchContainer && typeof lunches !== 'undefined') {
     lunchContainer.innerHTML = "";
