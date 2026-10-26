@@ -97,7 +97,7 @@ btn.addEventListener('click', () => {
                  hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-600
                  transition-all cursor-pointer">
     <option value="" data-i18n="select.default">Wybierz sekcję menu...</option>
-    <option value="zestawy-container" data-i18n="select.zestawy">🍱 Zestawy</option>
+    <option value="zestawy-section" data-i18n="select.zestawy">🍱 Zestawy</option>
     <option value="poke-container" data-i18n="select.poke">🍲 Poke Bowl's</option>
     <option value="lunch-container" data-i18n="select.lunch">🥗 Lunch</option>
     <option value="appetizers-container" data-i18n="select.appetizers">🥟 Przystawki</option>
@@ -115,7 +115,7 @@ btn.addEventListener('click', () => {
 <div id="zestawy-section" class="text-center py-5">
   <h2 class="text-red-600 font-bold text-3xl" data-i18n="sections.zestawy">Zestawy</h2>
 </div>
-<div id="zestawy-container" class="flex flex-wrap justify-center gap-8 pb-20"></div>
+<div id="zestawy-container" class="flex flex-wrap justify-center gap-8 pb-10"></div>
 
 <!-- POKE BOWL'S -->
 <div class="text-center py-5">
@@ -275,8 +275,8 @@ btn.addEventListener('click', () => {
               transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] text-center" data-i18n="about.mission">
       Przez lata współpracy w restauracji w Oświęcimiu rozwijaliśmy swoje umiejętności, aż w końcu powstał pomysł na JAKANA SUSHI — miejsce, w którym kreatywność, pasja i radość dzielenia się jedzeniem stają się codziennością.
 Naszą misją jest popularyzowanie sushi w przystępnej formie, dostarczanie jedzenia premium na wynos oraz tworzenie wyjątkowych wydarzeń — od kameralnych spotkań, przez urodziny i bankiety, po wesela i eventy firmowe. Menu zostało zaprojektowane tak, aby każdy znalazł coś dla siebie: klasyczne sashimi i nigiri, rolki z surową i pieczoną rybą, propozycje wegetariańskie, ciepłe przystawki, sajgonki, pierożki i krewetki w tempurze.
-Nasz lokal znajduje się na granicy Brzeszcz i Jawiszowic, przy ul. Ofiar Oświęcimia 4, tuż obok przystanku „Pod Górnikiem”. Zapraszamy wszystkich mieszkańców Brzeszcz, Jawiszowic i okolicznych miejscowości. Jeśli nie możesz nas odwiedzić osobiście, zadzwoń — zajmiemy się wszystkim i dostarczymy sushi pod Twoje drzwi.
-In JAKANA SUSHI wierzymy, że gotowanie to przede wszystkim pasja i radość dzielenia się nią z innymi — dlatego codziennie staramy się, aby każdy kęs był wyjątkowy.
+Nasz lokal znajduje się na granicy Brzeszcz i Jawiszowic, przy ul. Ofiar Oświęcimia 4, tuż obok przystanku „Pod Górnikiem”. Zapraszamy wszystkich mieszkańców Brzeszcz, Jawiszowic i okolicznych miejscowości. Jeśli nie możesz nas odwiedzić osobiście, zadzwoń — zajmiemy się wszystkim i dostarczymy sushi pod Twój dom.
+W JAKANA SUSHI wierzymy, że gotowanie to przede wszystkim pasja i radość dzielenia się nią z innymi — dlatego codziennie staramy się, aby każdy kęs był wyjątkowy.
     </p>
   </div>
 </div>
@@ -350,41 +350,124 @@ In JAKANA SUSHI wierzymy, że gotowanie to przede wszystkim pasja i radość dzi
 // ==========================================
 
 const menuItems = [
-  { name: { pl: "HITORI", en: "HITORI" }, price: 59, path: "Post_nr_2_zestawy/2.png" },
-  { name: { pl: "FUTARI", en: "FUTARI" }, price: 109, path: "Post_nr_2_zestawy/3.png" },
-  { name: { pl: "FUTARI YAKITORI", en: "FUTARI YAKITORI" }, price: 115, path: "Post_nr_2_zestawy/4.png" },
-  { name: { pl: "FUTARI MIDORI 🍃", en: "FUTARI MIDORI 🍃" }, price: 95, path: "Post_nr_2_zestawy/5.png" },
-  { name: { pl: "KIZUNA", en: "KIZUNA" }, price: 149, path: "Post_nr_2_zestawy/6.png" },
-  { name: { pl: "KAZOKU", en: "KAZOKU" }, price: 219, path: "Post_nr_2_zestawy/7.png" },
-  { name: { pl: "JAKANA PARTY", en: "JAKANA PARTY" }, price: 269, path: "Post_nr_2_zestawy/8.png" },
-  { name: { pl: "TAKUSAN", en: "TAKUSAN" }, price: 349, path: "Post_nr_2_zestawy/9.png" }
+  { 
+    name: { pl: "HITORI (18 szt.)", en: "HITORI (18 pcs)" }, 
+    price: 61, 
+    path: "Post_nr_2_zestawy/hitori.jpg",
+    details: { pl: "Uramak (Twój wybór!), Hosomak ogórek, Nigiri Sake", en: "Uramaki (Your choice!), Hosomaki cucumber, Nigiri Sake" }
+  },
+  { 
+    name: { pl: "FUTARI (28 szt. + 6 szt.)", en: "FUTARI (28 pcs + 6 pcs)" }, 
+    price: 112, 
+    path: "Post_nr_2_zestawy/futari.jpg",
+    details: { pl: "Futomak Maguro Philadelphia, Futomak Sake Tatar, Hosomak ogórek, Hosomak Sake Maki, Sajgonki 6 szt.", en: "Futomaki Maguro Philadelphia, Futomaki Sake Tartare, Hosomaki cucumber, Hosomaki Sake Maki, Spring rolls 6 pcs." }
+  },
+  { 
+    name: { pl: "FUTARI YAKITORI (28 szt. + 6 szt.)", en: "FUTARI YAKITORI (28 pcs + 6 pcs)" }, 
+    price: 119, 
+    path: "Post_nr_2_zestawy/futari yakatori.jpg",
+    details: { pl: "Futomak Sake Kabayaki, Futomak Ebi Panko, Hosomak ogórek, Hosomak Negi Maguro Maki (MT), Sajgonki 6 szt.", en: "Futomaki Sake Kabayaki, Futomaki Ebi Panko, Hosomaki cucumber, Hosomaki Negi Maguro Maki (MT), Spring rolls 6 pcs." }
+  },
+  { 
+    name: { pl: "FUTARI MIDORI 🍃 (28 szt. + 6 szt.)", en: "FUTARI MIDORI 🍃 (28 pcs + 6 pcs)" }, 
+    price: 98, 
+    path: "Post_nr_2_zestawy/futari midori.jpg",
+    details: { pl: "Futomak Sweet Veggie, Futomak Midori Ten, Hosomak ogórek, Hosomak awokado, Sajgonki 6 szt.", en: "Futomaki Sweet Veggie, Futomaki Midori Ten, Hosomaki cucumber, Hosomaki avocado, Spring rolls 6 pcs." }
+  },
+  { 
+    name: { pl: "KIZUNA (30 szt.)", en: "KIZUNA (30 pcs)" }, 
+    price: 154, 
+    path: "Post_nr_2_zestawy/kizuna.jpg",
+    details: { pl: "Futomak Sake Philadelphia, Futomak Maguro Ten, Futomak Ebi Panko, Futomak Sweet Veggie, Futomak Chicken Karaage", en: "Futomaki Sake Philadelphia, Futomaki Maguro Ten, Futomaki Ebi Panko, Futomaki Sweet Veggie, Futomaki Chicken Karaage" }
+  },
+  { 
+    name: { pl: "URAMAKI TRIO (24szt. + 6szt.)", en: "URAMAKI TRIO (24pcs + 6pcs)" }, 
+    price: 119, 
+    path: "Post_nr_2_zestawy/uramaki trio.jpg",
+    details: { pl: "Uramak Sake Roll, Uramak Crisby Ebi, Uramak Crunchy Maguro, pierożki Gyoza z wieprzowiną 6 szt.", en: "Uramaki Sake Roll, Uramaki Crispy Ebi, Uramaki Crunchy Maguro, pork Gyoza 6 pcs." }
+  },
+  { 
+    name: { pl: "URAMAKI TRIO PREMIUM (24szt. + 6szt.)", en: "URAMAKI TRIO PREMIUM (24pcs + 6pcs)" }, 
+    price: 159, 
+    path: "Post_nr_2_zestawy/uramaki trio premium.jpg",
+    details: { pl: "Specjały: Ebi Mango Roll, Ebi Sake Tatar, Unagi Maguro Roll, Kani Maru - 6szt. kuleczki krabowe", en: "Specials: Ebi Mango Roll, Ebi Sake Tartare, Unagi Maguro Roll, Kani Maru - 6pcs crab balls" }
+  },
+  { 
+    name: { pl: "KAZOKU (48 szt. + 6 szt. + 6 szt.)", en: "KAZOKU (48 pcs + 6 pcs + 6 pcs)" }, 
+    price: 229, 
+    path: "Post_nr_2_zestawy/kazoku.jpg",
+    details: { pl: "Futomak Ebi Panko, Futomak Sake Tatar, Futomak Midori Ten, Futomak Unagi Kabayaki, Special Sake Special Roll, Hosomak Negi Maguro Maki, Hosomak ogórek, Pierożki Gyoza z warzywami - 6 szt., Kani Maru - 6 szt.", en: "Futomaki Ebi Panko, Futomaki Sake Tartare, Futomaki Midori Ten, Futomaki Unagi Kabayaki, Special Sake Special Roll, Hosomak Negi Maguro Maki, Hosomak cucumber, Vegetable Gyoza - 6 pcs, Kani Maru - 6 pcs." }
+  },
+  { 
+    name: { pl: "JAKANA PARTY (70 szt.)", en: "JAKANA PARTY (70 pcs)" }, 
+    price: 279, 
+    path: "Post_nr_2_zestawy/jakana party.jpg",
+    details: { pl: "Uramak California Roll, Uramak Yasai Roll, Uramak Sake Nutty, Uramak Crunchy Chicken, Futomak Spicy Maguro, Futomak Sake Philadelphia, Futomak Ebi Panko, Futomak Tara Ten, Futomak Jakana Dill, Hosomak ogórek", en: "Uramaki California Roll, Uramaki Yasai Roll, Uramaki Sake Nutty, Uramaki Crunchy Chicken, Futomaki Spicy Maguro, Futomaki Sake Philadelphia, Futomaki Ebi Panko, Futomaki Tara Ten, Futomaki Jakana Dill, Hosomaki cucumber" }
+  },
+  { 
+    name: { pl: "TAKUSAN (100 szt.)", en: "TAKUSAN (100 pcs)" }, 
+    price: 369, 
+    path: "Post_nr_2_zestawy/takusan.jpg",
+    details: { pl: "Hosomak Sake, Hosomak Ogórek, Hosomak Ebi, Hosomak Negi Maguro, Uramak Sake Roll, Uramak Crisby Ebi, Uramak Maguro Roll, Uramak Yasai Roll, Futomak Sake Ten, Futomak Maguro Ten, Futomak Ebi Sake, Futomak Unagi Kabayaki, Futomak Chicken Kaarage, Futomak Sweet Veggie.", en: "Hosomaki Sake, Hosomaki Cucumber, Hosomaki Ebi, Hosomaki Negi Maguro, Uramaki Sake Roll, Uramaki Crispy Ebi, Uramaki Maguro Roll, Uramaki Yasai Roll, Futomaki Sake Ten, Futomaki Maguro Ten, Futomaki Ebi Sake, Futomaki Unagi Kabayaki, Futomaki Chicken Karaage, Futomaki Sweet Veggie." }
+  }
+];
+
+
+const pokeBowls = [
+  {
+    name: { pl: "Fish Bowl", en: "Fish Bowl" },
+    description: { 
+      pl: "Ryż sushi, awokado, ogórek, edamame, czerwona cebulka, oshinko, tykwa, szczypiorkowe mayo - łosoś surowy lub opalany, smażone kulki z tuńczyka, posypane sezamem", 
+      en: "sushi rice, avocado, cucumber, edamame, red onion, oshinko, kanpyo, chive mayo - raw or flamed salmon, fried tuna balls, sprinkled with sesame" 
+    },
+    price: "45 zł",
+    image: "images/Bowl_zdjecia/fish bowl 45zl.jpg"
+  },
+  {
+    name: { pl: "Shrimp Bowl", en: "Shrimp Bowl" },
+    description: { 
+      pl: "Ryż sushi, awokado, ogórek, edamame, czerwona cebulka, oshinko, tykwa, spice mayo - krewetki w panko, posypane sezamem", 
+      en: "sushi rice, avocado, cucumber, edamame, red onion, oshinko, kanpyo, spicy mayo - panko shrimp, sprinkled with sesame" 
+    },
+    price: "49 zł",
+    image: "images/Bowl_zdjecia/shrimp bowl 49zl.jpg"
+  },
+  {
+    name: { pl: "Chicken Bowl", en: "Chicken Bowl" },
+    description: { 
+      pl: "Ryż sushi, awokado, ogórek, edamame, czerwona cebulka, oshinko, tykwa, spice mayo - kurczak w panko, posypane sezamem", 
+      en: "sushi rice, avocado, cucumber, edamame, red onion, oshinko, kanpyo, spicy mayo - panko chicken, sprinkled with sesame" 
+    },
+    price: "43 zł",
+    image: "images/Bowl_zdjecia/chicken bowl 43zl.jpg"
+  }
 ];
 
 const lunches = [
   { 
     name: { pl: "Klasyczny", en: "Classic" }, 
-    price: 39, 
+    price: 45, 
     description: { 
-      pl: "Futomak Sake Philadelphia, Nigiri Sake, Sajgonki 2 szt., Goma Wakame.", 
-      en: "Futomaki Sake Philadelphia, Nigiri Sake, Spring rolls 2 pcs, Goma Wakame." 
+      pl: "Futomak Sake Philadelphia, Nigiri Sake, Sajgonki XL 2 szt., Goma Wakame.", 
+      en: "Futomaki Sake Philadelphia, Nigiri Sake, Spring rolls XL 2 pcs, Goma Wakame." 
     }, 
     images: ["images/Lunch_zdjecia/1.jpg"] 
   },
   { 
     name: { pl: "Pieczony", en: "Baked" }, 
-    price: 39, 
+    price: 45, 
     description: { 
-      pl: "Futomak Sake Kabayaki, Nigiri Sake Yaki, Sajgonki 2 szt., Goma Wakame.", 
-      en: "Futomaki Sake Kabayaki, Nigiri Sake Yaki, Spring rolls 2 pcs, Goma Wakame." 
+      pl: "Futomak Sake Kabayaki, Nigiri Sake Yaki, Sajgonki XL 2 szt., Goma Wakame.", 
+      en: "Futomaki Sake Kabayaki, Nigiri Sake Yaki, Spring rolls XL 2 pcs, Goma Wakame." 
     }, 
     images: ["images/Lunch_zdjecia/2.jpg"] 
   },
   { 
     name: { pl: "Wegetariański", en: "Vegetarian" }, 
-    price: 39, 
+    price: 45, 
     description: { 
-      pl: "Futomak Sweet Veggie, Nigiri Awokado, Sajgonki 2 szt., Goma Wakame.", 
-      en: "Futomaki Sweet Veggie, Avocado Nigiri, Spring rolls 2 pcs, Goma Wakame." 
+      pl: "Futomak Sweet Veggie, Nigiri Awokado, Sajgonki XL 2 szt., Goma Wakame.", 
+      en: "Futomaki Sweet Veggie, Avocado Nigiri, Spring rolls XL 2 pcs, Goma Wakame." 
     }, 
     images: ["images/Lunch_zdjecia/3.jpg"] 
   }
@@ -392,56 +475,56 @@ const lunches = [
 
 const appetizers = [
   {
-    name: { pl: "Sajgonki z warzywami", en: "Vegetable spring rolls" },
-    details: { pl: "6 szt.", en: "6 pcs." },
-    price: "15 zł",
+    name: { pl: "SAJGONKI", en: "SPRING ROLLS" },
+    details: { pl: "6 szt. z warzywami", en: "6 pcs. with vegetables" },
+    price: "16 zł",
     veggie: true,
     image: "images/Przystawki_zdjecia/1.jpg"
   },
   {
-    name: { pl: "Pierożki Gyoza", en: "Gyoza dumplings" },
-    details: { pl: "6 szt. – warzywa", en: "6 pcs. – vegetables" },
-    price: "15 zł",
+    name: { pl: "PIEROŻKI GYOZA", en: "GYOZA DUMPLINGS" },
+    details: { pl: "6 szt. z warzywami (16 zł) / 6 szt. z wieprzowiną (20 zł)", en: "6 pcs. vegetables (16 zł) / 6 pcs. pork (20 zł)" },
+    price: "16 zł / 20 zł",
     veggie: true,
     image: "images/Przystawki_zdjecia/x.jpg"
   },
   {
-    name: { pl: "Pierożki Gyoza", en: "Gyoza dumplings" },
-    details: { pl: "6 szt. – wieprzowina", en: "6 pcs. – pork" },
-    price: "20 zł",
-    veggie: false,
-    image: "images/Przystawki_zdjecia/2.jpg"
-  },
-  {
-    name: { pl: "Krewetki w panko", en: "Panko shrimp" },
-    details: { pl: "6 szt. / 10 szt.", en: "6 pcs. / 10 pcs." },
-    price: "30 zł / 55 zł",
+    name: { pl: "KREWETKI W PANKO", en: "PANKO SHRIMP" },
+    details: { pl: "6 szt.", en: "6 pcs." },
+    price: "35 zł",
     veggie: false,
     image: "images/Przystawki_zdjecia/3.jpg"
   },
   {
-    name: { pl: "Warzywa w tempurze", en: "Tempura vegetables" },
+    name: { pl: "KANI MARU", en: "KANI MARU" },
+    details: { pl: "6 szt. kuleczki krabowe", en: "6 pcs. crab balls" },
+    price: "30 zł",
+    veggie: false,
+    image: "images/Przystawki_zdjecia/kuleczki.jpg"
+  },
+  {
+    name: { pl: "WARZYWA W TEMPURZE", en: "TEMPURA VEGETABLES" },
     details: { pl: "10 szt.", en: "10 pcs." },
     price: "15 zł",
     veggie: true,
     image: "images/Przystawki_zdjecia/4.jpg"
   },
   {
-    name: { pl: "Tatar z łososia", en: "Salmon tartare" },
+    name: { pl: "TATAR Z ŁOSOSIA", en: "SALMON TARTARE" },
     details: { pl: "150 g", en: "150 g" },
     price: "36 zł",
     veggie: false,
     image: "images/Przystawki_zdjecia/5.jpg"
   },
   {
-    name: { pl: "Edamame fasolki", en: "Edamame beans" },
+    name: { pl: "EDAMAME fasolki", en: "EDAMAME beans" },
     details: { pl: "200 g", en: "200 g" },
     price: "15 zł",
     veggie: true,
     image: "images/Przystawki_zdjecia/6.jpg"
   },
   {
-    name: { pl: "Goma Wakame", en: "Goma Wakame" },
+    name: { pl: "GOMA WAKAME", en: "GOMA WAKAME" },
     details: { pl: "150 g", en: "150 g" },
     price: "10 zł",
     veggie: true,
@@ -449,40 +532,22 @@ const appetizers = [
   }
 ];
 
-const pokeBowls = [
-  {
-    name: { pl: "Fish Bowl", en: "Fish Bowl" },
-    price: "45 zł",
-    image: "images/Bowl_zdjecia/fish bowl 45zl.jpg"
-  },
-  {
-    name: { pl: "Shrimp Bowl", en: "Shrimp Bowl" },
-    price: "49 zł",
-    image: "images/Bowl_zdjecia/shrimp bowl 49zl.jpg"
-  },
-  {
-    name: { pl: "Chicken Bowl", en: "Chicken Bowl" },
-    price: "43 zł",
-    image: "images/Bowl_zdjecia/chicken bowl 43zl.jpg"
-  }
-];
-
 const sashimi = [
   {
-    name: { pl: "Sashimi Sake", en: "Sashimi Sake" },
-    details: { pl: "Łosoś – 6 szt.", en: "Salmon – 6 pcs." },
+    name: { pl: "SASHIMI SAKE", en: "SASHIMI SAKE" },
+    details: { pl: "łosoś 6 szt.", en: "salmon 6 pcs." },
     price: "35 zł",
     image: "images/Sashimi_zdjecia/1.jpg"
   },
   {
-    name: { pl: "Sashimi Maguro", en: "Sashimi Maguro" },
-    details: { pl: "Tuńczyk – 6 szt.", en: "Tuna – 6 pcs." },
+    name: { pl: "SASHIMI MAGURO", en: "SASHIMI MAGURO" },
+    details: { pl: "tuńczyk 6 szt.", en: "tuna 6 pcs." },
     price: "40 zł",
     image: "images/Sashimi_zdjecia/2.jpg"
   },
   {
-    name: { pl: "Sashimi Deluxe", en: "Sashimi Deluxe" },
-    details: { pl: "Szef poleca – 15 szt.", en: "Chef's recommendation – 15 pcs." },
+    name: { pl: "SASHIMI DELUX", en: "SASHIMI DELUX" },
+    details: { pl: "szef poleca 15 szt.", en: "chef recommendation 15 pcs." },
     price: "75 zł",
     image: "images/Sashimi_zdjecia/3.jpg"
   }
@@ -490,169 +555,169 @@ const sashimi = [
 
 const futomaki = [
   { 
-    name: { pl: "Sake Philadelphia", en: "Sake Philadelphia" }, 
+    name: { pl: "SAKE PHILADELPHIA", en: "SAKE PHILADELPHIA" }, 
     description: { pl: "łosoś, ogórek, awokado, sałata, serek", en: "salmon, cucumber, avocado, lettuce, cream cheese" }, 
-    price: "30 zł", 
+    price: "32 zł", 
     image: "images/Futomaki_zdjecia/1.png" 
   },
   { 
-    name: { pl: "Sake Kabayaki", en: "Sake Kabayaki" }, 
+    name: { pl: "SAKE KABAYAKI", en: "SAKE KABAYAKI" }, 
     description: { pl: "łosoś pieczony, ogórek, awokado, sałata, marynowana tykwa, serek - sos kabayaki", en: "roasted salmon, cucumber, avocado, lettuce, pickled kanpyo, cream cheese - kabayaki sauce" }, 
-    price: "30 zł", 
+    price: "32 zł", 
     image: "images/Futomaki_zdjecia/2.png" 
   },
   { 
-    name: { pl: "Sake Ten", en: "Sake Ten" }, 
-    description: { pl: "łosoś w tempurze, ogórek, awokado, mango, groszek cukrowy, spicy mayo – pulpa mango", en: "tempura salmon, cucumber, avocado, mango, sugar snap peas, spicy mayo – mango pulp" }, 
-    price: "31 zł", 
+    name: { pl: "SAKE TEN", en: "SAKE TEN" }, 
+    description: { pl: "łosoś w tempurze, ogórek, awokado, mango, spicy mayo - pulpa mango", en: "tempura salmon, cucumber, avocado, mango, spicy mayo - mango pulp" }, 
+    price: "33 zł", 
     image: "images/Futomaki_zdjecia/3.png" 
   },
   { 
-    name: { pl: "Maguro Philadelphia", en: "Maguro Philadelphia" }, 
+    name: { pl: "MAGURO PHILADELPHIA", en: "MAGURO PHILADELPHIA" }, 
     description: { pl: "tuńczyk, ogórek, awokado, sałata, oshinko, serek", en: "tuna, cucumber, avocado, lettuce, oshinko, cream cheese" }, 
-    price: "34 zł", 
+    price: "36 zł", 
     image: "images/Futomaki_zdjecia/4.png" 
   },
   { 
-    name: { pl: "Maguro Ten", en: "Maguro Ten" }, 
-    description: { pl: "tuńczyk w panko, ogórek, awokado, oshinko, groszek cukrowy, spicy mayo – sos kabayaki", en: "panko tuna, cucumber, avocado, oshinko, sugar snap peas, spicy mayo – kabayaki sauce" }, 
-    price: "35 zł", 
+    name: { pl: "MAGURO TEN", en: "MAGURO TEN" }, 
+    description: { pl: "tuńczyk w panko, ogórek, awokado, oshinko, spicy mayo - sos kabayaki", en: "panko tuna, cucumber, avocado, oshinko, spicy mayo - kabayaki sauce" }, 
+    price: "37 zł", 
     image: "images/Futomaki_zdjecia/5.png" 
   },
   { 
-    name: { pl: "Spicy Maguro 🌶️", en: "Spicy Maguro 🌶️" }, 
-    description: { pl: "tuńczyk, ogórek, awokado, sałata, oshinko, chilli, serek wasabi – kizami wasabi", en: "tuna, cucumber, avocado, lettuce, oshinko, chilli, wasabi cream cheese – kizami wasabi" }, 
-    price: "35 zł", 
+    name: { pl: "SPICY MAGURO 🌶️🌶️", en: "SPICY MAGURO 🌶️🌶️" }, 
+    description: { pl: "tuńczyk, ogórek, awokado, sałata, oshinko, chilli, serek wasabi - kizami wasabi", en: "tuna, cucumber, avocado, lettuce, oshinko, chilli, wasabi cream cheese - kizami wasabi" }, 
+    price: "37 zł", 
     image: "images/Futomaki_zdjecia/6.png" 
   },
   { 
-    name: { pl: "Ebi Panko", en: "Ebi Panko" }, 
-    description: { pl: "krewetka w panko, ogórek, awokado, mango, tobiko, spicy mayo – pulpa mango", en: "panko shrimp, cucumber, avocado, mango, tobiko, spicy mayo – mango pulp" }, 
-    price: "35 zł", 
-    image: "images/Futomaki_zdjecia/7.png" 
+    name: { pl: "EBI PANKO", en: "EBI PANKO" }, 
+    description: { pl: "krewetka w panko, ogórek, awokado, mango, tobiko, spicy mayo - pulpa mango", en: "panko shrimp, cucumber, avocado, mango, tobiko, spicy mayo - mango pulp" }, 
+    price: "37 zł", 
+    image: "images/Futomaki_zdjecia/7.png"
   },
   { 
-    name: { pl: "Ebi Sake", en: "Ebi Sake" }, 
-    description: { pl: "krewetka w panko, łosoś, ogórek, awokado, sałata, szczypiorkowy mayo – szczypiorek", en: "panko shrimp, salmon, cucumber, avocado, lettuce, chive mayo – chives" }, 
-    price: "38 zł", 
+    name: { pl: "EBI SAKE", en: "EBI SAKE" }, 
+    description: { pl: "krewetka w panko, łosoś, ogórek, awokado, sałata, szczypiorkowe mayo - szczypiorek", en: "panko shrimp, salmon, cucumber, avocado, lettuce, chive mayo - chives" }, 
+    price: "40 zł", 
     image: "images/Futomaki_zdjecia/8.png" 
   },
   { 
-    name: { pl: "Sake Tatar", en: "Sake Tatar" }, 
-    description: { pl: "tatar z łososia, ogórek, awokado, serek wasabi – szczypiorek", en: "salmon tartare, cucumber, avocado, wasabi cream cheese – chives" }, 
-    price: "32 zł", 
-    image: "images/Futomaki_zdjecia/9.png" 
+    name: { pl: "SAKE TATAR", en: "SAKE TATAR" }, 
+    description: { pl: "tatar z łososia, ogórek, awokado, serek wasabi - szczypiorek", en: "salmon tartare, cucumber, avocado, wasabi cream cheese - chives" }, 
+    price: "34 zł", 
+    image: "images/Futomaki_zdjecia/9.png"
   },
   { 
-    name: { pl: "Tara Ten", en: "Tara Ten" }, 
+    name: { pl: "TARA TEN", en: "TARA TEN" }, 
     description: { pl: "dorsz w panko, ogórek, awokado, sałata, oshinko, serek wasabi", en: "panko cod, cucumber, avocado, lettuce, oshinko, wasabi cream cheese" }, 
-    price: "30 zł", 
+    price: "32 zł", 
     image: "images/Futomaki_zdjecia/10.png" 
   },
   { 
-    name: { pl: "Sparkling Tuna", en: "Sparkling Tuna" }, 
-    description: { pl: "tatar z tuńczyka, ogórek, oshinko, spicy mayo – biały sezam", en: "tuna tartare, cucumber, oshinko, spicy mayo – white sesame" }, 
-    price: "36 zł", 
-    image: "images/Futomaki_zdjecia/11.png" 
+    name: { pl: "UNAGI KABAYAKI", en: "UNAGI KABAYAKI" }, 
+    description: { pl: "węgorz, ogórek, awokado, sałata, marynowana czerwona cebula, serek - sos kabayaki", en: "eel, cucumber, avocado, lettuce, pickled red onion, cream cheese - kabayaki sauce" }, 
+    price: "38 zł", 
+    image: "images/Futomaki_zdjecia/kabayaki.jpg" 
   },
   { 
-    name: { pl: "Chicken Kaarage 🐔", en: "Chicken Kaarage 🐔" }, 
-    description: { pl: "kurczak w panko, ogórek, awokado, sałata, orzechowy mayo – orzechy ziemne", en: "panko chicken, cucumber, avocado, lettuce, peanut mayo – peanuts" }, 
-    price: "29 zł", 
+    name: { pl: "CHICKEN KAARAGE", en: "CHICKEN KAARAGE" }, 
+    description: { pl: "kurczak w panko, ogórek, awokado, sałata, orzechowe mayo - orzechy ziemne", en: "panko chicken, cucumber, avocado, lettuce, peanut mayo - peanuts" }, 
+    price: "31 zł", 
     image: "images/Futomaki_zdjecia/12.png" 
   },
   { 
-    name: { pl: "Jakana Dill", en: "Jakana Dill" }, 
-    description: { pl: "łosoś z sojowo-koperkowej zalewy, ogórek, awokado, marynowana czerwona cebula, shitake, serek – koperek", en: "soy-dill marinated salmon, cucumber, avocado, pickled red onion, shiitake, cream cheese – dill" }, 
-    price: "32 zł", 
-    image: "images/Futomaki_zdjecia/13.png" 
+    name: { pl: "JAKANA DILL", en: "JAKANA DILL" }, 
+    description: { pl: "łosoś marynowany w sojowo-koperkowej zalewie, ogórek, awokado, marynowana czerwona cebula, grzyby shitake, serek - koperek", en: "soy-dill marinated salmon, cucumber, avocado, pickled red onion, shiitake mushrooms, cream cheese - dill" }, 
+    price: "34 zł", 
+    image: "images/Futomaki_zdjecia/13.png"
   },
   { 
-    name: { pl: "Sweet Veggie 🍃", en: "Sweet Veggie 🍃" }, 
-    description: { pl: "batat, ogórek, awokado, sałata, oshinko, marynowana tykwa, marynowana czerwona cebula, serek – sos kabayaki", en: "sweet potato, cucumber, avocado, lettuce, oshinko, pickled kanpyo, pickled red onion, cream cheese – kabayaki sauce" }, 
-    price: "26 zł", 
-    image: "images/Futomaki_zdjecia/14.png" 
+    name: { pl: "SWEET VEGGIE 🍃", en: "SWEET VEGGIE 🍃" }, 
+    description: { pl: "batat w tempurze, ogórek, awokado, sałata, oshinko, marynowana tykwa, marynowana czerwona cebula, serek - sos kabayaki", en: "tempura sweet potato, cucumber, avocado, lettuce, oshinko, pickled kanpyo, pickled red onion, cream cheese - kabayaki sauce" }, 
+    price: "28 zł", 
+    image: "images/Futomaki_zdjecia/14.png"
   },
   { 
-    name: { pl: "Midori Ten 🍃", en: "Midori Ten 🍃" }, 
-    description: { pl: "szparag w tempurze, ogórek, awokado, sałata, groszek cukrowy, szczypiorkowy mayo – szczypiorek", en: "tempura asparagus, cucumber, avocado, lettuce, sugar snap peas, chive mayo – chives" }, 
-    price: "26 zł", 
-    image: "images/Futomaki_zdjecia/15.png" 
+    name: { pl: "MIDORI TEN 🍃", en: "MIDORI TEN 🍃" }, 
+    description: { pl: "szparag w tempurze, ogórek, awokado, sałata, marynowane grzyby shitake, szczypiorkowe mayo - szczypiorek", en: "tempura asparagus, cucumber, avocado, lettuce, pickled shiitake mushrooms, chive mayo - chives" }, 
+    price: "28 zł", 
+    image: "images/Futomaki_zdjecia/Futomaki Midori Ten.png" 
   }
 ];
 
 const kaburamaki = [
   {
-    name: { pl: "EBI Sake Tatar", en: "EBI Sake Tatar" },
-    description: { pl: "krewetka w panko, ogórek, awokado, spicy mayo – tatar z łososia, szczypiorek", en: "panko shrimp, cucumber, avocado, spicy mayo – salmon tartare, chives" },
-    price: "47 zł",
-    image: "images/Kaburamaki_zdjecia/1.png"
-  },
-  {
-    name: { pl: "EBI Mango Roll", en: "EBI Mango Roll" },
-    description: { pl: "krewetka w panko, ogórek, awokado, spicy mayo - salsa mango, pistacje, pulpa mango", en: "panko shrimp, cucumber, avocado, spicy mayo - mango salsa, pistachios, mango pulp" },
-    price: "47 zł",
-    image: "images/Kaburamaki_zdjecia/2.png"
-  },
-  {
-    name: { pl: "Rainbow Roll", en: "Rainbow Roll" },
-    description: { pl: "krewetka w panko, ogórek, awokado, szczypiorkowy mayo - łosoś, tuńczyk, krewetka, awokado", en: "panko shrimp, cucumber, avocado, chive mayo - salmon, tuna, shrimp, avocado" },
+    name: { pl: "Ebi Sake Tatar", en: "Ebi Sake Tatar" },
+    description: { pl: "krewetka w panko, ogórek, awokado, spicy mayo - tatar z łososia, szczypiorek", en: "panko shrimp, cucumber, avocado, spicy mayo - salmon tartare, chives" },
     price: "49 zł",
+    image: "images/Kaburamaki_zdjecia/Ebi Sake Tatar.png"
+  },
+  {
+    name: { pl: "Ebi Mango Roll", en: "Ebi Mango Roll" },
+    description: { pl: "krewetka w panko, ogórek, awokado, spicy mayo - salsa mango, pistacje, pulpa mango", en: "panko shrimp, cucumber, avocado, spicy mayo - mango salsa, pistachios, mango pulp" },
+    price: "49 zł",
+    image: "images/Kaburamaki_zdjecia/Ebi Mango Roll.png"
+  },
+  {
+    name: { pl: "RAINBOW ROLL", en: "RAINBOW ROLL" },
+    description: { pl: "krewetka w panko, ogórek, awokado, szczypiorkowe mayo - łosoś, tuńczyk, krewetka, awokado", en: "panko shrimp, cucumber, avocado, chive mayo - salmon, tuna, shrimp, avocado" },
+    price: "51 zł",
     image: "images/Kaburamaki_zdjecia/3.png"
   },
   {
-    name: { pl: "Awokado Special Roll", en: "Avocado Special Roll" },
+    name: { pl: "AWOKADO SPECIAL ROLL", en: "AVOCADO SPECIAL ROLL" },
     description: { pl: "krewetka w panko, ogórek, awokado, spicy mayo - awokado, sos kabayaki, mix sezam", en: "panko shrimp, cucumber, avocado, spicy mayo - avocado, kabayaki sauce, mixed sesame" },
-    price: "45 zł",
-    image: "images/Kaburamaki_zdjecia/4.png"
+    price: "47 zł",
+    image: "images/Kaburamaki_zdjecia/awokado_special.jpg"
   },
   {
-    name: { pl: "Sake Special Roll", en: "Sake Special Roll" },
-    description: { pl: "ogórek, awokado, szparag w tempurze, serek szczypiorkowy - łosoś opalany, czosnek", en: "cucumber, avocado, tempura asparagus, chive cream cheese - flamed salmon, garlic" },
-    price: "45 zł",
+    name: { pl: "SAKE SPECIAL ROLL", en: "SAKE SPECIAL ROLL" },
+    description: { pl: "szparag w tempurze, ogórek, awokado, szczypiorkowe mayo - łosoś opalany, szczypiorek", en: "tempura asparagus, cucumber, avocado, chive mayo - flamed salmon, chives" },
+    price: "47 zł",
     image: "images/Kaburamaki_zdjecia/5.png"
   },
   {
-    name: { pl: "Double Tuna Roll 🌶️", en: "Double Tuna Roll 🌶️" },
-    description: { pl: "tuńczyk, ogórek, awokado, spicy mayo - tuńczyk, kizami wasabi", en: "tuna, cucumber, avocado, spicy mayo - tuna, kizami wasabi" },
+    name: { pl: "UNAGI MAGURO ROLL", en: "UNAGI MAGURO ROLL" },
+    description: { pl: "węgorz, ogórek, awokado, serek wasabi - tuńczyk opalany, sos kabayaki, spice mayo, zielona cebulka", en: "eel, cucumber, avocado, wasabi cream cheese - flamed tuna, kabayaki sauce, spicy mayo, green onion" },
     price: "51 zł",
-    image: "images/Kaburamaki_zdjecia/6.png"
+    image: "images/Kaburamaki_zdjecia/unagi.jpg"
   },
   {
-    name: { pl: "Jakana Special Roll", en: "Jakana Special Roll" },
-    description: { pl: "ogórek, awokado, groszek cukrowy, serek – łosoś z sojowo-koperkowej zalewy, marynowana czerwona cebula, shitake, koperek", en: "cucumber, avocado, sugar snap peas, cream cheese – soy-dill marinated salmon, pickled red onion, shiitake, dill" },
-    price: "45 zł",
+    name: { pl: "JAKANA SPECIAL ROLL", en: "JAKANA SPECIAL ROLL" },
+    description: { pl: "ogórek, awokado, marynowana czerwona cebulka, shitake, serek - łosoś z sojowo- koperkowej zalewy, koperek", en: "cucumber, avocado, pickled red onion, shiitake, cream cheese - soy-dill marinated salmon, dill" },
+    price: "47 zł",
     image: "images/Kaburamaki_zdjecia/7.png"
   }
 ];
 
 const nigiri = [
   {
-    name: { pl: "SAKE", en: "SAKE" },
+    name: { pl: "NIGIRI SAKE", en: "NIGIRI SAKE" },
     description: { pl: "łosoś", en: "salmon" },
     price: "12 zł",
     image: "images/Nigiri_zdjecia/2.png"
   },
   {
-    name: { pl: "SAKE YAKI", en: "SAKE YAKI" },
+    name: { pl: "NIGIRI SAKE YAKI", en: "NIGIRI SAKE YAKI" },
     description: { pl: "łosoś opalany", en: "flamed salmon" },
     price: "12 zł",
     image: "images/Nigiri_zdjecia/1.png"
   },
   {
-    name: { pl: "MAGURO", en: "MAGURO" },
+    name: { pl: "NIGIRI MAGURO", en: "NIGIRI MAGURO" },
     description: { pl: "tuńczyk", en: "tuna" },
     price: "13 zł",
     image: "images/Nigiri_zdjecia/3.png"
   },
   {
-    name: { pl: "EBI", en: "EBI" },
+    name: { pl: "NIGIRI EBI", en: "NIGIRI EBI" },
     description: { pl: "krewetka", en: "shrimp" },
     price: "14 zł",
     image: "images/Nigiri_zdjecia/4.png"
   },
   {
-    name: { pl: "AWOKADO🍃", en: "AVOCADO🍃" },
+    name: { pl: "NIGIRI AWOKADO 🍃", en: "NIGIRI AVOCADO 🍃" },
     description: { pl: "awokado", en: "avocado" },
     price: "11 zł",
     image: "images/Nigiri_zdjecia/5.png"
@@ -662,73 +727,79 @@ const nigiri = [
 const uramaki = [
   {
     name: { pl: "SAKE ROLL", en: "SAKE ROLL" },
-    description: { pl: "łosoś, ogórek, awokado, sałata, serek – biały sezam", en: "salmon, cucumber, avocado, lettuce, cream cheese – white sesame" },
-    price: "32 zł",
+    description: { pl: "łosoś, ogórek, awokado, serek - biały sezam", en: "salmon, cucumber, avocado, cream cheese - white sesame" },
+    price: "34 zł",
     image: "images/Uramaki_zdjecia/1.png"
   },
   {
     name: { pl: "SAKE YAKI ROLL", en: "SAKE YAKI ROLL" },
-    description: { pl: "łosoś pieczony, ogórek, awokado, marynowana tykwa, szczypiorkowy mayo – szczypiorek", en: "roasted salmon, cucumber, avocado, pickled kanpyo, chive mayo – chives" },
-    price: "32 zł",
+    description: { pl: "łosoś pieczony, ogórek, awokado, marynowana tykwa, szczypiorkowe mayo - szczypiorek", en: "roasted salmon, cucumber, avocado, pickled kanpyo, chive mayo - chives" },
+    price: "34 zł",
     image: "images/Uramaki_zdjecia/2.png"
   },
   {
     name: { pl: "MAGURO ROLL", en: "MAGURO ROLL" },
-    description: { pl: "tuńczyk, ogórek, oshinko, spicy mayo – kimchi sezam", en: "tuna, cucumber, oshinko, spicy mayo – kimchi sesame" },
-    price: "36 zł",
-    image: "images/Uramaki_zdjecia/3.png"
+    description: { pl: "tuńczyk, ogórek, oshinko, spice mayo - szczypiorek, czarny sezam", en: "tuna, cucumber, oshinko, spicy mayo - chives, black sesame" },
+    price: "38 zł",
+    image: "images/Uramaki_zdjecia/maguro roll.jpg"
   },
   {
-    name: { pl: "CRISPY EBI", en: "CRISPY EBI" },
-    description: { pl: "krewetka w panko, ogórek, awokado, spicy mayo – mix sezam", en: "panko shrimp, cucumber, avocado, spicy mayo – mixed sesame" },
-    price: "37 zł",
+    name: { pl: "CRISBY EBI", en: "CRISPY EBI" },
+    description: { pl: "krewetka w panko, ogórek, awokado, spicy mayo - mix sezam, sos kabayaki", en: "panko shrimp, cucumber, avocado, spicy mayo - mixed sesame, kabayaki sauce" },
+    price: "38 zł",
     image: "images/Uramaki_zdjecia/4.png"
   },
   {
     name: { pl: "EBI NUTTY", en: "EBI NUTTY" },
-    description: { pl: "krewetka w panko, ogórek, awokado, orzechowy mayo – orzeszki ziemne", en: "panko shrimp, cucumber, avocado, peanut mayo – peanuts" },
-    price: "36 zł",
+    description: { pl: "krewetka w panko, ogórek, awokado, orzechowe mayo - orzeszki ziemne", en: "panko shrimp, cucumber, avocado, peanut mayo - peanuts" },
+    price: "38 zł",
     image: "images/Uramaki_zdjecia/5.png"
   },
   {
     name: { pl: "SAKE NUTTY", en: "SAKE NUTTY" },
-    description: { pl: "łosoś w tempurze, ogórek, awokado, serek – pistacje", en: "tempura salmon, cucumber, avocado, cream cheese – pistachios" },
-    price: "35 zł",
+    description: { pl: "łosoś w tempurze, ogórek, awokado, serek - pistacje", en: "tempura salmon, cucumber, avocado, cream cheese - pistachios" },
+    price: "37 zł",
     image: "images/Uramaki_zdjecia/6.png"
   },
   {
     name: { pl: "CRUNCHY MAGURO", en: "CRUNCHY MAGURO" },
-    description: { pl: "tuńczyk w panko, ogórek, oshinko, spicy mayo – kataifii, sos kabayaki", en: "panko tuna, cucumber, oshinko, spicy mayo – kataifi, kabayaki sauce" },
-    price: "37 zł",
+    description: { pl: "tuńczyk w panko, ogórek, oshinko, spicy mayo - kataifii, sos kabayaki", en: "panko tuna, cucumber, oshinko, spicy mayo - kataifi, kabayaki sauce" },
+    price: "39 zł",
     image: "images/Uramaki_zdjecia/7.png"
   },
   {
-    name: { pl: "YASAI ROLL🍃", en: "YASAI ROLL🍃" },
-    description: { pl: "szparag w tempurze, ogórek, awokado, marynowana tykwa, marynowana czerwona cebula - szczypiorek i biały sezam", en: "tempura asparagus, cucumber, avocado, pickled kanpyo, pickled red onion - chives and white sesame" },
-    price: "28 zł",
+    name: { pl: "YASAI ROLL 🍃", en: "YASAI ROLL 🍃" },
+    description: { pl: "szparag w tempurze, ogórek, awokado, marynowana tykwa, marynowana czerwona cebula, szczypiorkowe mayo - szczypiorek i biały sezam", en: "tempura asparagus, cucumber, avocado, pickled kanpyo, pickled red onion, chive mayo - chives and white sesame" },
+    price: "30 zł",
     image: "images/Uramaki_zdjecia/8.png"
   },
   {
-    name: { pl: "CRUNCHY CHICKEN🌶️", en: "CRUNCHY CHICKEN🌶️" },
-    description: { pl: "kurczak w panko, ogórek, awokado, spicy mayo – kataifii, crunchy chilli", en: "panko chicken, cucumber, avocado, spicy mayo – kataifi, crunchy chilli" },
-    price: "31 zł",
+    name: { pl: "CRUNCHY CHICKEN 🌶️", en: "CRUNCHY CHICKEN 🌶️" },
+    description: { pl: "kurczak w panko, ogórek, awokado, spicy mayo - kataifii, crunchy chilli", en: "panko chicken, cucumber, avocado, spicy mayo - kataifi, crunchy chilli" },
+    price: "33 zł",
     image: "images/Uramaki_zdjecia/9.png"
   },
   {
     name: { pl: "CALIFORNIA ROLL", en: "CALIFORNIA ROLL" },
-    description: { pl: "krewetka gotowana, ogórek, awokado, groszek cukrowy, serek wasabi - tobiko pomarańczowe, mix sezam", en: "boiled shrimp, cucumber, avocado, sugar snap peas, wasabi cream cheese - orange tobiko, mixed sesame" },
-    price: "38 zł",
+    description: { pl: "krewetka gotowana, ogórek, awokado, serek wasabi - tobiko pomarańczowe, mix sezam", en: "boiled shrimp, cucumber, avocado, wasabi cream cheese - orange tobiko, mixed sesame" },
+    price: "40 zł",
     image: "images/Uramaki_zdjecia/10.png"
   },
   {
     name: { pl: "TARA ROLL", en: "TARA ROLL" },
-    description: { pl: "dorsz w panko, ogórek, oshinko, serek szczypiorkowy – sezam czarny", en: "panko cod, cucumber, oshinko, chive cream cheese – black sesame" },
-    price: "32 zł",
+    description: { pl: "dorsz w panko, ogórek, oshinko, serek wasabi - czarny sezam", en: "panko cod, cucumber, oshinko, wasabi cream cheese - black sesame" },
+    price: "34 zł",
     image: "images/Uramaki_zdjecia/11.png"
   }
 ];
 
 const hosomaki = [
+  {
+    name: { pl: "VEGE MAKI 🍃", en: "VEGE MAKI 🍃" },
+    description: { pl: "do wyboru: ogórek, awokado, tykwa lub oshinko", en: "choice of: cucumber, avocado, kanpyo or oshinko" },
+    price: "15 zł",
+    image: "images/Hosomaki_zdjecia/1.png"
+  },
   {
     name: { pl: "SAKE MAKI", en: "SAKE MAKI" },
     description: { pl: "łosoś", en: "salmon" },
@@ -743,42 +814,20 @@ const hosomaki = [
   },
   {
     name: { pl: "NEGI MAGURO MAKI", en: "NEGI MAGURO MAKI" },
-    description: { pl: "tuńczyk", en: "tuna" },
+    description: { pl: "tuńczyk, zielona cebulka", en: "tuna, green onion" },
     price: "19 zł",
     image: "images/Hosomaki_zdjecia/5.png"
-  },
-  {
-    name: { pl: "VEGE MAKI – OGÓREK🍃", en: "VEGE MAKI – CUCUMBER🍃" },
-    description: { pl: "ogórek", en: "cucumber" },
-    price: "15 zł",
-    image: "images/Hosomaki_zdjecia/1.png"
-  },
-  {
-    name: { pl: "VEGE MAKI – AWOKADO🍃", en: "VEGE MAKI – AVOCADO🍃" },
-    description: { pl: "awokado", en: "avocado" },
-    price: "15 zł",
-    image: "images/Hosomaki_zdjecia/4.png"
-  },
-  {
-    name: { pl: "VEGE MAKI – TYKWA🍃", en: "VEGE MAKI – KANPYO🍃" },
-    description: { pl: "tykwa", en: "pickled kanpyo" },
-    price: "15 zł",
-    image: "images/Hosomaki_zdjecia/2.png"
-  },
-  {
-    name: { pl: "VEGE MAKI – OSHINKO🍃", en: "VEGE MAKI – OSHINKO🍃" },
-    description: { pl: "oshinko", en: "oshinko" },
-    price: "15 zł",
-    image: "images/Hosomaki_zdjecia/3.png"
   }
 ];
 
 const sauces = [
   { name: { pl: "Sos kabayaki", en: "Kabayaki sauce" }, price: "2 zł" },
-  { name: { pl: "Sos spicy mayo", en: "Spicy mayo sauce" }, price: "2 zł" },
-  { name: { pl: "Sos szczypiorkowy mayo", en: "Chive mayo sauce" }, price: "2 zł" },
-  { name: { pl: "Sos sweet chili", en: "Sweet chili sauce" }, price: "2 zł" },
-  { name: { pl: "Sos kyoto", en: "Kyoto sauce" }, price: "2 zł" },
+  { name: { pl: "Sos sojowy", en: "Soy sauce" }, price: "2 zł" },
+  { name: { pl: "Sos spice mayo", en: "Spicy mayo sauce" }, price: "3 zł" },
+  { name: { pl: "Sos szczypiorkowe mayo", en: "Chive mayo sauce" }, price: "3 zł" },
+  { name: { pl: "Sos sweet chili", en: "Sweet chili sauce" }, price: "3 zł" },
+  { name: { pl: "Sos kani maru", en: "Kani maru sauce" }, price: "3 zł" },
+  { name: { pl: "Sos orzechowe mayo", en: "Peanut mayo sauce" }, price: "3 zł" },
   { name: { pl: "Sos sriracha", en: "Sriracha sauce" }, price: "3 zł" },
   { name: { pl: "Pulpa mango", en: "Mango pulp" }, price: "2 zł" },
   { name: { pl: "Tobiko", en: "Tobiko" }, price: "8 zł" },
@@ -795,52 +844,62 @@ function getText(field, lang) {
 function renderMenu() {
   const currentLang = localStorage.getItem('preferred_lang') || 'pl';
 
-  // 1. Zestawy
-  const menuContainer = document.getElementById("zestawy-container") || document.getElementById("menu-container");
+const menuContainer = document.getElementById("zestawy-container") || document.getElementById("menu-container");
   if (menuContainer && typeof menuItems !== 'undefined') {
     menuContainer.innerHTML = "";
     menuItems.forEach(item => {
       const name = getText(item.name, currentLang);
+      const details = getText(item.details, currentLang);
       const div = document.createElement("div");
+      
+      // Szersze karty na laptopach/tabletach (md i lg: w-[48%]), węższe na telefonach (w-[95%])
       div.className = `
-        group w-[90%] sm:w-[80%] md:w-[48%] lg:w-[45%] xl:w-[40%] 2xl:w-[35%]
-        bg-white rounded-2xl p-5 border border-gray-200 shadow-md
+        group w-[95%] md:w-[48%] lg:w-[48%]
+        bg-white rounded-2xl p-5 border border-gray-200 shadow-md overflow-hidden
         transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] cursor-pointer
       `;
+      
       div.innerHTML = `
-        <img src="images/${item.path}" alt="${name}" class="mb-4 rounded-xl w-full object-cover transition-transform duration-300 group-hover:scale-105">
+        <div class="overflow-hidden rounded-xl mb-4 h-72 sm:h-80 md:h-96 flex items-center justify-center p-2">
+          <img src="images/${item.path}" alt="${name}" class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105">
+        </div>
         <h4 class="text-xl font-semibold text-gray-800 text-center">${name}</h4>
-        <p class="text-red-600 font-bold text-lg text-center mt-1">${item.price} zł</p>
+        ${details ? `<p class="text-gray-500 text-sm mt-1 leading-relaxed text-center">${details}</p>` : ''}
+        <p class="text-red-600 font-bold text-lg text-center mt-2">${item.price} zł</p>
       `;
       menuContainer.appendChild(div);
     });
   }
 
-  // 2. Poke bowls
+  // 2. Poke Bowls (object-contain, z białym tłem, żeby teksty były w pełni widoczne)
   const pokeContainer = document.getElementById("poke-container");
-  if (pokeContainer) {
+  if (pokeContainer && typeof pokeBowls !== 'undefined') {
     pokeContainer.innerHTML = "";
-    pokeBowls.forEach(item => {
-      const name = getText(item.name, currentLang);
+    pokeBowls.forEach(bowl => {
+      const name = getText(bowl.name, currentLang);
+      const description = getText(bowl.description, currentLang);
+      
       const card = document.createElement("div");
       card.className = `
-        group bg-white rounded-2xl border border-gray-200 shadow-md p-6
-        w-[92%] sm:w-[50%] md:w-[45%] lg:w-[36%] max-w-[430px] text-center
-        transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]
+        group bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden
+        w-[90%] max-w-[420px] text-center transition-all duration-300 ease-out
+        hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]
       `;
       card.innerHTML = `
-        <div class="w-full overflow-hidden rounded-xl">
-          <img src="${item.image}" alt="${name}" loading="lazy"
-            class="w-full h-64 object-contain transition-transform duration-300 group-hover:scale-105">
+        <div class="overflow-hidden h-72 sm:h-80 md:h-96 flex items-center justify-center bg-white">
+          <img src="${bowl.image}" alt="${name}" loading="lazy" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105">
         </div>
-        <h3 class="text-2xl font-semibold text-gray-800 mt-4">${name}</h3>
-        <p class="text-red-600 font-bold text-2xl mt-2">${item.price}</p>
+        <div class="p-5">
+          <h3 class="text-xl font-semibold">${name}</h3>
+          <p class="text-gray-500 text-sm mt-1 leading-relaxed">${description}</p>
+          <p class="text-red-600 font-bold text-lg mt-2">${bowl.price}</p>
+        </div>
       `;
       pokeContainer.appendChild(card);
     });
   }
 
-  // 3. Lunch
+// 3. Lunch
   const lunchContainer = document.getElementById("lunch-container");
   if (lunchContainer && typeof lunches !== 'undefined') {
     lunchContainer.innerHTML = "";
@@ -850,20 +909,22 @@ function renderMenu() {
       
       const card = document.createElement("div");
       card.className = `
-        group bg-white rounded-2xl shadow-md border border-gray-200
+        group bg-white rounded-2xl shadow-md border border-gray-200 overflow-hidden
         p-6 w-[90%] max-w-[520px] flex flex-col items-center
         transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]
       `;
       card.innerHTML = `
         <h3 class="text-2xl font-bold text-center text-gray-800">${name} – ${lunch.price} zł</h3>
         <p class="text-center text-gray-600 text-sm mt-3 leading-relaxed">${description}</p>
-        <img src="${lunch.images[0]}" alt="${name}" class="mt-6 rounded-xl w-full object-cover transition-transform duration-300 group-hover:scale-105">
+        <div class="overflow-hidden rounded-xl mt-6 w-full h-full flex items-center justify-center bg-white">
+          <img src="${lunch.images[0]}" alt="${name}" class="rounded-xl w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105">
+        </div>
       `;
       lunchContainer.appendChild(card);
     });
   }
 
-  // 3. Przystawki
+  // 4. Przystawki
   const appetizersContainer = document.getElementById("appetizers-container");
   if (appetizersContainer && typeof appetizers !== 'undefined') {
     appetizersContainer.innerHTML = "";
@@ -873,12 +934,14 @@ function renderMenu() {
       
       const card = document.createElement("div");
       card.className = `
-        bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden
+        group bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden
         w-[90%] max-w-[420px] text-center transition-all duration-300 ease-out
         hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]
       `;
       card.innerHTML = `
-        <img src="${item.image}" alt="${name}" loading="lazy" class="w-full h-72 sm:h-80 md:h-96 object-cover object-center">
+        <div class="overflow-hidden h-72 sm:h-80 md:h-96 flex items-center justify-center bg-gray-50">
+          <img src="${item.image}" alt="${name}" loading="lazy" class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105">
+        </div>
         <div class="p-5">
           <h3 class="text-xl font-semibold">${name} ${item.veggie ? "🍃" : ""}</h3>
           <p class="text-gray-500 text-sm mt-1">${details}</p>
@@ -889,7 +952,7 @@ function renderMenu() {
     });
   }
 
-  // 4. Sashimi
+  // 5. Sashimi
   const sashimiContainer = document.getElementById("sashimi-container");
   if (sashimiContainer && typeof sashimi !== 'undefined') {
     sashimiContainer.innerHTML = "";
@@ -899,12 +962,14 @@ function renderMenu() {
       
       const card = document.createElement("div");
       card.className = `
-        bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden
+        group bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden
         w-[90%] max-w-[420px] text-center transition-all duration-300 ease-out
         hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]
       `;
       card.innerHTML = `
-        <img src="${item.image}" alt="${name}" loading="lazy" class="w-full h-72 sm:h-80 md:h-96 object-cover object-center">
+        <div class="overflow-hidden h-72 sm:h-80 md:h-96 flex items-center justify-center bg-gray-50">
+          <img src="${item.image}" alt="${name}" loading="lazy" class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105">
+        </div>
         <div class="p-5">
           <h3 class="text-xl font-semibold">${name}</h3>
           <p class="text-gray-500 text-sm mt-1">${details}</p>
@@ -915,7 +980,7 @@ function renderMenu() {
     });
   }
 
-  // 5. Futomaki
+  // 6. Futomaki
   const futomakiContainer = document.getElementById("futomaki-container");
   if (futomakiContainer && typeof futomaki !== 'undefined') {
     futomakiContainer.innerHTML = "";
@@ -925,12 +990,14 @@ function renderMenu() {
       
       const card = document.createElement("div");
       card.className = `
-        group bg-white rounded-2xl border border-gray-200 shadow-md
+        group bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden
         p-5 w-[90%] max-w-[420px] text-center
         transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]
       `;
       card.innerHTML = `
-        <img src="${item.image}" alt="${name}" class="mb-4 rounded-xl w-full object-cover transition-transform duration-300 group-hover:scale-105">
+        <div class="overflow-hidden rounded-xl mb-4 h-72 sm:h-80 md:h-96 flex items-center justify-center bg-gray-50">
+          <img src="${item.image}" alt="${name}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+        </div>
         <h3 class="text-xl font-semibold">${name}</h3>
         <p class="text-gray-500 text-sm mt-1 leading-relaxed">${description}</p>
         <p class="text-red-600 font-bold text-lg mt-2">${item.price}</p>
@@ -939,7 +1006,7 @@ function renderMenu() {
     });
   }
 
-  // 6. Kaburamaki
+  // 7. Kaburamaki
   const kaburamakiContainer = document.getElementById("kaburamaki-container");
   if (kaburamakiContainer && typeof kaburamaki !== 'undefined') {
     kaburamakiContainer.innerHTML = "";
@@ -949,12 +1016,14 @@ function renderMenu() {
       
       const card = document.createElement("div");
       card.className = `
-        group bg-white rounded-2xl border border-gray-200 shadow-md
+        group bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden
         p-5 w-[90%] max-w-[420px] text-center
         transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]
       `;
       card.innerHTML = `
-        <img src="${item.image}" alt="${name}" class="mb-4 rounded-xl w-full object-cover transition-transform duration-300 group-hover:scale-105">
+        <div class="overflow-hidden rounded-xl mb-4 h-72 sm:h-80 md:h-96 flex items-center justify-center bg-gray-50">
+          <img src="${item.image}" alt="${name}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+        </div>
         <h3 class="text-xl font-semibold">${name}</h3>
         <p class="text-gray-500 text-sm mt-1 leading-relaxed">${description}</p>
         <p class="text-red-600 font-bold text-lg mt-2">${item.price}</p>
@@ -963,7 +1032,7 @@ function renderMenu() {
     });
   }
 
-  // 7. Nigiri
+  // 8. Nigiri
   const nigiriContainer = document.getElementById("nigiri-container");
   if (nigiriContainer && typeof nigiri !== 'undefined') {
     nigiriContainer.innerHTML = "";
@@ -973,12 +1042,14 @@ function renderMenu() {
       
       const card = document.createElement("div");
       card.className = `
-        group bg-white rounded-2xl border border-gray-200 shadow-md
+        group bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden
         p-5 w-[90%] max-w-[420px] text-center
         transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]
       `;
       card.innerHTML = `
-        <img src="${item.image}" alt="${name}" class="mb-4 rounded-xl w-full object-cover transition-transform duration-300 group-hover:scale-105">
+        <div class="overflow-hidden rounded-xl mb-4 h-72 sm:h-80 md:h-96 flex items-center justify-center bg-gray-50">
+          <img src="${item.image}" alt="${name}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+        </div>
         <h3 class="text-xl font-semibold">${name}</h3>
         <p class="text-gray-500 text-sm mt-1 leading-relaxed">${description}</p>
         <p class="text-red-600 font-bold text-lg mt-2">${item.price}</p>
@@ -987,7 +1058,7 @@ function renderMenu() {
     });
   }
 
-  // 8. Uramaki
+  // 9. Uramaki
   const uramakiContainer = document.getElementById("uramaki-container");
   if (uramakiContainer && typeof uramaki !== 'undefined') {
     uramakiContainer.innerHTML = "";
@@ -997,12 +1068,14 @@ function renderMenu() {
       
       const card = document.createElement("div");
       card.className = `
-        group bg-white rounded-2xl border border-gray-200 shadow-md
+        group bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden
         p-5 w-[90%] max-w-[420px] text-center
         transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]
       `;
       card.innerHTML = `
-        <img src="${item.image}" alt="${name}" class="mb-4 rounded-xl w-full object-cover transition-transform duration-300 group-hover:scale-105">
+        <div class="overflow-hidden rounded-xl mb-4 h-72 sm:h-80 md:h-96 flex items-center justify-center bg-gray-50">
+          <img src="${item.image}" alt="${name}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+        </div>
         <h3 class="text-xl font-semibold">${name}</h3>
         <p class="text-gray-500 text-sm mt-1 leading-relaxed">${description}</p>
         <p class="text-red-600 font-bold text-lg mt-2">${item.price}</p>
@@ -1011,7 +1084,7 @@ function renderMenu() {
     });
   }
 
-  // 9. Hosomaki
+  // 10. Hosomaki
   const hosomakiContainer = document.getElementById("hosomaki-container");
   if (hosomakiContainer && typeof hosomaki !== 'undefined') {
     hosomakiContainer.innerHTML = "";
@@ -1021,12 +1094,14 @@ function renderMenu() {
       
       const card = document.createElement("div");
       card.className = `
-        group bg-white rounded-2xl border border-gray-200 shadow-md
+        group bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden
         p-5 w-[90%] max-w-[420px] text-center
         transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]
       `;
       card.innerHTML = `
-        <img src="${item.image}" alt="${name}" class="mb-4 rounded-xl w-full object-cover transition-transform duration-300 group-hover:scale-105">
+        <div class="overflow-hidden rounded-xl mb-4 h-72 sm:h-80 md:h-96 flex items-center justify-center bg-gray-50">
+          <img src="${item.image}" alt="${name}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+        </div>
         <h3 class="text-xl font-semibold">${name}</h3>
         <p class="text-gray-500 text-sm mt-1 leading-relaxed">${description}</p>
         <p class="text-red-600 font-bold text-lg mt-2">${item.price}</p>
@@ -1035,7 +1110,7 @@ function renderMenu() {
     });
   }
 
-  // 10. Sosy i dodatki
+  // 11. Sosy i dodatki
   const saucesContainer = document.getElementById("sauces-container");
   if (saucesContainer && typeof sauces !== 'undefined') {
     saucesContainer.innerHTML = "";
@@ -1044,7 +1119,7 @@ function renderMenu() {
       
       const card = document.createElement("div");
       card.className = `
-        bg-white rounded-2xl border border-gray-200 shadow-md
+        bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden
         p-4 w-[90%] sm:w-[45%] md:w-[30%] lg:w-[22%] text-center
         transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1
       `;
@@ -1078,7 +1153,7 @@ const translations = {
     "select.uramaki": "🌀 Uramaki",
     "select.hosomaki": "🎯 Hosomaki",
     "select.sauces": "🥢 Sosy i dodatki",
-    "sections.zestawy": "Zestawy",
+    "sections.zestawy": "Zestawy Sushi",
     "sections.poke": "Poke Bowl's",
     "sections.lunch": "Lunch",
     "lunch.info": "Szybki posiłek do pracy, szkoły — dostępny od poniedziałku do piątku w godzinach 12:00–16:00",
@@ -1097,7 +1172,7 @@ const translations = {
     "about.intro2": "Jesteśmy Jakub Odrzywolski i Anna Kapuścińska, współzałożyciele JAKANA SUSHI.",
     "about.anna_desc": "Jestem specjalistką kuchni japońskiej z 10-letnim doświadczeniem zdobytym zarówno w Polsce, jak i za granicą. Pierwszym etapem mojej kariery był 6-letni okres pracy w renomowanej sieci Sticks & Sushi w Kopenhadze (Dania) - jednym z najbardziej uznanych konceptów gastronomicznych specjalizujących się w sushi i kuchni japońskiej w Europie. Praca w międzynarodowym środowisku, w restauracjach o wysokim standardzie obsługi, umożliwiła mi poznanie najnowszych trendów kulinarnych, rozwój umiejętności technicznych oraz opanowanie efektywnego zarządzania procesami gastronomicznymi na dużą skalę. Istotnym elementem rozwoju zawodowego była również dwuletnia wewnętrzna szkoła Sushi i Yakitori w Danii, zakończona egzaminem potwierdzającym umiejętności. Udział w tym programie pozwolił mi na zdobycie specjalistycznej wiedzy i certyfikowanych kwalifikacji w zakresie kuchni japońskiej. Kolejnym ważnym doświadczeniem był 3-letni okres pracy w restauracji Itamae w Oświęcimiu, gdzie zdobyłam solidne podstawy w zakresie przygotowania sushi, organizacji pracy kuchni oraz obsługi klienta w branży gastronomii japońskiej w Polsce.",
     "about.jakub_desc": "Jestem doświadczonym sushi master z 10-letnią praktyką w kuchni japońskiej. Swoją drogę zawodową rozpocząłem od solidnych podstaw edukacyjnych - ukończyłem szkołę o profilu gastronomicznym, uzyskując tytuł Technika żywienia i usług gastronomicznych oraz potwierdzając swoje umiejętności zdanym egzaminem zawodowym. Kluczowym etapem zawodowym okazała się 9-letnia praca w restauracji Itamae w Oświęcimiu, specjalizującej się w sushi i kuchni japońskiej. To właśnie tam, dzięki codziennemu obcowaniu z wymagającymi standardami jakości i oczekiwaniami klientów, zdobywałem praktyczne doświadczenie w przygotowywaniu sushi i autentycznych dań kuchni japońskiej. Ostatnie 1,5 roku pracy na stanowisku szefa kuchni to czas, w którym nie tylko doskonaliłem swoje rzemiosło, ale również nabyłem potrzebne mi kompetencje menedżerskie. Zarządzałem zespołem kucharzy, odpowiadałem za koordynację pracy kuchni, nadzór nad jakością potraw oraz szkolenie nowych pracowników.",
-    "about.mission": "Przez lata współpracy w restauracji w Oświęcimiu rozwijaliśmy swoje umiejętności, aż w końcu powstał pomysł na JAKANA SUSHI — miejsce, w którym kreatywność, pasja i radość dzielenia się jedzeniem stają się codziennością. Naszą misją jest popularyzowanie sushi w przystępnej formie, dostarczanie jedzenia premium na wynos oraz tworzenie wyjątkowych wydarzeń — od kameralnych spotkań, przez urodziny i bankiety, po wesela i eventy firmowe. Menu zostało zaprojektowane tak, aby każdy znalazł coś dla siebie: klasyczne sashimi i nigiri, rolki z surową i pieczoną rybą, propozycje wegetariańskie, ciepłe przystawki, sajgonki, pierożki i krewetki w tempurze. Nasz lokal znajduje się na granicy Brzeszcz i Jawiszowic, przy ul. Ofiar Oświęcimia 4, tuż obok przystanku „Pod Górnikiem”. Zapraszamy wszystkich mieszkańców Brzeszcz, Jawiszowic i okolicznych miejscowości. Jeśli nie możesz nas odwiedzić osobiście, zadzwoń — zajmiemy się wszystkim i dostarczymy sushi pod Twoje drzwi. W JAKANA SUSHI wierzymy, że gotowanie to przede wszystkim pasja i radość dzielenia się nią z innymi — dlatego codziennie staramy się, aby każdy kęs był wyjątkowy.",
+    "about.mission": "Przez lata współpracy w restauracji w Oświęcimiu rozwijaliśmy swoje umiejętności, aż w końcu powstał pomysł na JAKANA SUSHI — miejsce, w którym kreatywność, pasja i radość dzielenia się jedzeniem stają się codziennością. Naszą misją jest popularyzowanie sushi w przystępnej formie, dostarczanie jedzenia premium na wynos oraz tworzenie wyjątkowych wydarzeń — od kameralnych spotkań, przez urodziny i bankiety, po wesela i eventy firmowe. Menu zostało zaprojektowane tak, aby każdy znalazł coś dla siebie: klasyczne sashimi i nigiri, rolki z surową i pieczoną rybą, propozycje wegetariańskie, ciepłe przystawki, sajgonki, pierożki i krewetki w tempurze. Nasz lokal znajduje się na granicy Brzeszcz i Jawiszowic, przy ul. Ofiar Oświęcimia 4, tuż obok przystanku „Pod Górnikiem”. Zapraszamy wszystkich mieszkańców Brzeszcz, Jawiszowic i okolicznych miejscowości. Jeśli nie możesz nas odwiedzić osobiście, zadzwoń — zajmiemy się wszystkim i dostarczymy sushi pod Twój dom. W JAKANA SUSHI wierzymy, że gotowanie to przede wszystkim pasja i radość dzielenia się nią z innymi — dlatego codziennie staramy się, aby każdy kęs był wyjątkowy.",
     "contact.title": "Kontakt",
     "contact.address_label": "📍 Adres:",
     "contact.phone_label": "📞 Telefon:",
@@ -1120,7 +1195,7 @@ const translations = {
     "select.uramaki": "🌀 Uramaki",
     "select.hosomaki": "🎯 Hosomaki",
     "select.sauces": "🥢 Sauces & Extras",
-    "sections.zestawy": "Sets",
+    "sections.zestawy": "Sushi Sets",
     "sections.poke": "Poke Bowls",
     "sections.lunch": "Lunch",
     "lunch.info": "Quick meal for work or school — available Monday to Friday from 12:00 to 16:00",
